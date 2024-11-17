@@ -1,5 +1,5 @@
-#ifndef _DATE_HPP
-#define _DATE_HPP
+#ifndef _DATE_HPP_
+#define _DATE_HPP_
 
 #include <iostream>
 
@@ -18,4 +18,4 @@ public:
 	int getYear();
 };
 	
-#endif // _DATE_HPP
+#endif // _DATE_HPP_

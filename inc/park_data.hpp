@@ -1,5 +1,5 @@
-#ifndef PARK_DATA
-#define PARK_DATA
+#ifndef _PARK_DATA_
+#define _PARK_DATA_
 
 #include <iostream>
 #include <string>
@@ -28,4 +28,4 @@ public:
 
 
 
-#endif 		// PARK_DATA
+#endif 		// _PARK_DATA_
