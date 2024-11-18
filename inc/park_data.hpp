@@ -6,17 +6,7 @@
 
 #include "time.hpp"
 
-class Registration {
-private:
-	Time	*entry;
-	Time  	*exit;
-
-public:
-	Registration (Time &in);
-	void setExitTime(Time &out);
-};
-
-class Vehicle:Registration {
+class Vehicle {
 private:
 	std::string license_plate;
 	std::string type;
@@ -25,4 +15,17 @@ public:
 	Vehicle(std::string lp, std::string t);
 };
 
-#endif	// PARK_DATA
+class IORegistry {
+private:
+	Vehicle *information;
+	Time	*entry;
+	Time  	*exit;
+
+public:
+	IORegistry (Vehicle &v, Time &in);
+	void setExitTime(Time &out);
+};
+
+
+
+#endif 		// _PARK_DATA_
