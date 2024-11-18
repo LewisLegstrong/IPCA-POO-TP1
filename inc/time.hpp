@@ -12,7 +12,7 @@ private:
 	int minute;
 	int seconds;
 
-public:	
+public:		
 	int getHour();
 	int getMinute();
 	int getSeconds();

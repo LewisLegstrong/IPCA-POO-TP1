@@ -14,6 +14,7 @@ private:
 
 public:
 	Vehicle(std::string lp);
+	std::string getLicensePlate();
 };
 
 class IORegistry {
