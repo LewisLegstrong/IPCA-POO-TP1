@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "time.hpp"
 
@@ -12,12 +13,12 @@ private:
 	std::string type;
 
 public:
-	Vehicle(std::string lp, std::string t);
+	Vehicle(std::string lp);
 };
 
 class IORegistry {
 private:
-	Vehicle *information;
+	const Vehicle *information;
 	Time	*entry;
 	Time  	*exit;
 
@@ -26,6 +27,14 @@ public:
 	void setExitTime(Time &out);
 };
 
+class Park {
+private: 
+	int maxCapacity;
+	int currentVehicles;
 
+	std::vector<IORegistry> parkedVehicles; 
+public: 
+	
+} ;
 
 #endif 		// _PARK_DATA_

@@ -1,4 +1,4 @@
-#include "../inc/date.hpp"
+#include "date.hpp"
 
 Date::Date(int d, int m, int y) {
 	this->day = d;

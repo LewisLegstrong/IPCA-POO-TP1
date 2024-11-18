@@ -1,9 +1,12 @@
-#include "../inc/park_data.hpp"
+#include "park_data.hpp"
 
-Vehicle::Vehicle(std::string lp, std::string t) {
+Vehicle::Vehicle(std::string lp) {
 	this->license_plate = lp;
-	this->type = t;
 }
+
+
+
+
 
 IORegistry::IORegistry(Vehicle &v, Time &in) {
 	this->information = &v;
