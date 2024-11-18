@@ -4,7 +4,8 @@
 
 #include "time.hpp"
 #include "date.hpp"
-#include "park_data.hpp"
+#include "vehicle_reg.hpp"
+#include "park.hpp"
 
 // void printV( std::vector<IORegistry> &v ) {
 //     for (IORegistry unit : v) {
@@ -13,8 +14,16 @@
 //     std::cout << std::endl;
 // }
 
+// void printV(std::vector<IORegistry> &v) {
+//     for (const IORegistry &unit : v) {
+//         std::cout << unit.getVehicle()->getLicensePlate() << " ";
+//     }
+//     std::cout << std::endl;
+// }
+
 int main() {
-	Vehicle v("aa-bb-cc");
+    Park myPark;
+
     // Create a Vehicle object with the license plate
     std::string licensePlate = "ABC123";
     Vehicle myVehicle(licensePlate);
@@ -22,18 +31,20 @@ int main() {
     // Create a Time object with the entry time (hours and minutes)
 	Time entryTime(10, 30, 0);
 
+    myPark.newEntry(myVehicle, entryTime);
 
-    // Create an IORegistry object using the Vehicle and Time objects
-    IORegistry myRegistry(myVehicle, entryTime);
+//////////////////////////////////////////////////////////////////////
+    // Create a Vehicle object with the license plate
+    std::string licensePlate1 = "123ABC";
+    Vehicle myVehicle1(licensePlate1);
 
-    // Create a vector to store IORegistry objects
-    std::vector<IORegistry> vehicles;
+    // Create a Time object with the entry time (hours and minutes)
+	Time entryTime1(11, 30, 0);
 
-    // Add the IORegistry object to the vector
-    vehicles.push_back(myRegistry);
+    myPark.newEntry(myVehicle1, entryTime1);
 
-    std::cout << myVehicle.getLicensePlate() << std::endl;
-    // printV(vehicles);
-
+//////////////////////////////////////////////////////////////////////
+    
+    myPark.listVehicles();
 	return 0;
 }
