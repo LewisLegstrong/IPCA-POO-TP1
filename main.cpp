@@ -6,6 +6,7 @@
 #include "date.hpp"
 #include "vehicle_reg.hpp"
 #include "park.hpp"
+#include "file_manipulation.hpp"
 
 // void printV( std::vector<IORegistry> &v ) {
 //     for (IORegistry unit : v) {
@@ -46,5 +47,15 @@ int main() {
 //////////////////////////////////////////////////////////////////////
     
     myPark.listVehicles();
+
+    //////////////////////////////////////////////////////////////////
+
+    writeNewFile("file.txt", "Matricula: ");
+    writeNewFile("carro.txt", "Marca: ");
+    appendToFile("file.txt", "69-CU-69");
+    appendToFile("carro.txt", "Ferrari");
+    readFile("file.txt");
+    readFile("carro.txt");
+
 	return 0;
 }
