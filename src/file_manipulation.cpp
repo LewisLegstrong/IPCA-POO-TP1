@@ -28,15 +28,3 @@ void readFile(std::string fileName) {
         }
     }
 }
-
-int main() {
-
-    writeNewFile("file.txt", "Matricula: ");
-    writeNewFile("carro.txt", "Marca: ");
-    appendToFile("file.txt", "69-CU-69");
-    appendToFile("carro.txt", "Ferrari");
-    readFile("file.txt");
-    readFile("carro.txt");
-
-	return 0;
-}
