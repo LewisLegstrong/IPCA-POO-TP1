@@ -20,7 +20,8 @@ public:
 
 	void listVehicles();
 	void newEntry (Vehicle &v, Time &in);
-    void removeEntry(const std::string &licensePlate);
+    // void removeEntry(const std::string &licensePlate);
+	void removeEntry(const std::string &licensePlate, Time &out);
     int getEmptySpots();
     int getOccupiedSpots();
 } ;

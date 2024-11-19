@@ -8,20 +8,6 @@
 #include "park.hpp"
 #include "file_manipulation.hpp"
 
-// void printV( std::vector<IORegistry> &v ) {
-//     for (IORegistry unit : v) {
-//         std::cout << unit.information->license_plate << " ";
-//     }
-//     std::cout << std::endl;
-// }
-
-// void printV(std::vector<IORegistry> &v) {
-//     for (const IORegistry &unit : v) {
-//         std::cout << unit.getVehicle()->getLicensePlate() << " ";
-//     }
-//     std::cout << std::endl;
-// }
-
 int main() {
     Park myPark(10);
     
@@ -50,8 +36,9 @@ int main() {
     std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
     std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
 
-    // Remove the vehicle from the park
-    myPark.removeEntry(licensePlate);
+  
+    Time exitTime(12, 45, 0);
+    myPark.removeEntry(licensePlate, exitTime);
 
     // List all vehicles in the park again
     myPark.listVehicles();
@@ -63,12 +50,12 @@ int main() {
 
     //////////////////////////////////////////////////////////////////
 
-    writeNewFile("file.txt", "Matricula: ");
-    writeNewFile("carro.txt", "Marca: ");
-    appendToFile("file.txt", "69-CU-69");
-    appendToFile("carro.txt", "Ferrari");
-    readFile("file.txt");
-    readFile("carro.txt");
+    // writeNewFile("file.txt", "Matricula: ");
+    // writeNewFile("carro.txt", "Marca: ");
+    // appendToFile("file.txt", "69-CU-69");
+    // appendToFile("carro.txt", "Ferrari");
+    // readFile("file.txt");
+    // readFile("carro.txt");
 
 	return 0;
 }

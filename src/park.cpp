@@ -22,12 +22,14 @@ void Park::newEntry(Vehicle &v, Time &in) {
     }
 }
 
-void Park::removeEntry(const std::string &licensePlate) {
+void Park::removeEntry(const std::string &licensePlate, Time &out) {
     for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
-        if (i->getVehicle()->getLicensePlate() == licensePlate){
+        if (i->getVehicle()->getLicensePlate() == licensePlate) {
+            i->setExitTime(out); // Set the exit time
+            std::cout << "Vehicle with license plate " << licensePlate << " has been removed at " 
+                      << out.getHour() << ":" << out.getMinute() << ":" << out.getSeconds() << std::endl;
             parkedVehicles.erase(i);
             currentVehicles--;
-            std::cout << "Vehicle with license plate " << licensePlate << " has been removed." << std::endl;
             return;
         }
     }
