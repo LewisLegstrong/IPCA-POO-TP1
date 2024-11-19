@@ -24,6 +24,8 @@ public:
 	void removeEntry(const std::string &licensePlate, Time &out);
     int getEmptySpots();
     int getOccupiedSpots();
+
+	void calculateTicket( std::string license	);
 } ;
 
 #endif 		// _PARK_

@@ -43,3 +43,16 @@ int Park::getEmptySpots() {
 int Park::getOccupiedSpots() {
     return currentVehicles;
 }
+void calculateTicket(std::string license) {
+    float priceToPay = 0,0;
+
+    for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
+        if (i->getVehicle()->getLicensePlate() == license) {
+            int timeInPark = i->getExitTime() - i->getEntryTime();
+            if (timeInPark < 60) {
+                if ( i->getEntryTime()->getHour() < 8 && i->getExitTime()->getHour() > 20) {
+                    priceToPay = (timeInPark/15) * 0,20;
+            }
+        }
+    }
+}
