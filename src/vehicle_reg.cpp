@@ -22,8 +22,8 @@ Vehicle* IORegistry::getVehicle() const {
 }
 
 
-std::string IORegistry::getDetails() const {
-    std::ostringstream oss;
+std::string IORegistry::getDetails() const { //Function to get the details of the vehicle
+    std::ostringstream oss; //String stream to concatenate the information
     oss << "License Plate: " << information->getLicensePlate()
         << ", Entry Time: " << entry->getHour() << ":" << entry->getMinute();
     return oss.str();

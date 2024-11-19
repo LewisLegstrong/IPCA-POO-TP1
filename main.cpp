@@ -22,8 +22,8 @@
 // }
 
 int main() {
-    Park myPark;
-
+    Park myPark(10);
+    
     // Create a Vehicle object with the license plate
     std::string licensePlate = "ABC123";
     Vehicle myVehicle(licensePlate);
@@ -46,5 +46,18 @@ int main() {
 //////////////////////////////////////////////////////////////////////
     
     myPark.listVehicles();
+    std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
+    std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
+
+    // Remove the vehicle from the park
+    myPark.removeEntry(licensePlate);
+
+    // List all vehicles in the park again
+    myPark.listVehicles();
+
+    // Print the number of empty and occupied spots again
+    std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
+    std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
+
 	return 0;
 }

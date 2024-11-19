@@ -16,8 +16,13 @@ private:
 
 	std::vector<IORegistry> parkedVehicles; 
 public: 
+    Park(int capacity);  //Constructor
+
 	void listVehicles();
 	void newEntry (Vehicle &v, Time &in);
+    void removeEntry(const std::string &licensePlate);
+    int getEmptySpots();
+    int getOccupiedSpots();
 } ;
 
 #endif 		// _PARK_
