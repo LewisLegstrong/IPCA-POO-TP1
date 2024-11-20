@@ -10,22 +10,24 @@
 #include "vehicle_reg.hpp"
 
 class Park {
+public: 
+    Park(int capacity);  //Constructor
+
 private: 
 	int maxCapacity;
 	int currentVehicles;
 
 	std::vector<IORegistry> parkedVehicles; 
-public: 
-    Park(int capacity);  //Constructor
 
+public:
 	void listVehicles();
 	void newEntry (Vehicle &v, Time &in);
-    // void removeEntry(const std::string &licensePlate);
-	void removeEntry(const std::string &licensePlate, Time &out);
-    int getEmptySpots();
-    int getOccupiedSpots();
-
-	void calculateTicket( std::string license	);
+ 	void removeEntry(const std::string &licensePlate, Time &out);
+    
+	int getEmptySpots();
+    int getOccupiedSpots(); 
+	
+	// float calculateTicket( std::string license	);
 } ;
 
 #endif 		// _PARK_
