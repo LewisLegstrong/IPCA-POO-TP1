@@ -44,8 +44,8 @@ int Park::getOccupiedSpots() {
     return currentVehicles;
 }
 
-int Park::getTimeSpentInPark(const std::string &licensePlate, const Time &current) const{
-    for (const auto &unit : parkedVehicles) {
+int Park::getTimeSpentInPark(const std::string &licensePlate, Time &current) const{
+    for (auto unit : parkedVehicles) {
         if (unit.getVehicle()->getLicensePlate() == licensePlate) {
             return unit.getTimeInPark(current);
         }

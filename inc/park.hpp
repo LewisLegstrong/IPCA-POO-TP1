@@ -22,11 +22,11 @@ private:
 public:
 	void listVehicles();
 	void newEntry (Vehicle &v, Time &in);
-    // void removeEntry(const std::string &licensePlate);
 	void removeEntry(const std::string &licensePlate, Time &out);
+	
     int getEmptySpots();
     int getOccupiedSpots();
-	int getTimeSpentInPark(const std::string &licensePlate, const Time &current) const;
+	int getTimeSpentInPark(const std::string &licensePlate, Time &current) const;
 
 	//void calculateTicket( std::string license	);
 } ;
