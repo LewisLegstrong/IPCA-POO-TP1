@@ -32,20 +32,20 @@ int main() {
 
 //////////////////////////////////////////////////////////////////////
     
-    myPark.listVehicles();
-    std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
-    std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
+    //myPark.listVehicles();
+    //std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
+    //std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
 
   
     Time exitTime(12, 45, 0);
     myPark.removeEntry(licensePlate, exitTime);
 
     // List all vehicles in the park again
-    myPark.listVehicles();
+    //myPark.listVehicles();
 
     // Print the number of empty and occupied spots again
-    std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
-    std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
+    //std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
+    //std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
 
 
     //////////////////////////////////////////////////////////////////
