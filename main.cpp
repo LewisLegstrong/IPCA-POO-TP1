@@ -9,8 +9,10 @@
 #include "file_manipulation.hpp"
 
 int main() {
+    // Create a Park object with a capacity of 10
     Park myPark(10);
     
+
     // Create a Vehicle object with the license plate
     std::string licensePlate = "ABC123";
     Vehicle myVehicle(licensePlate);
@@ -21,6 +23,7 @@ int main() {
     myPark.newEntry(myVehicle, entryTime);
 
 //////////////////////////////////////////////////////////////////////
+
     // Create a Vehicle object with the license plate
     std::string licensePlate1 = "123ABC";
     Vehicle myVehicle1(licensePlate1);
@@ -36,7 +39,8 @@ int main() {
     //std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
     //std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
 
-  
+
+    //Remove a vehicle from the park
     Time exitTime(12, 45, 0);
     myPark.removeEntry(licensePlate, exitTime);
 
@@ -56,6 +60,14 @@ int main() {
     // appendToFile("carro.txt", "Ferrari");
     // readFile("file.txt");
     // readFile("carro.txt");
+
+
+    // Time spent in the park
+    Time actualHour (17, 30, 0);
+    int timeSpent = myPark.getTimeSpentInPark(licensePlate1, actualHour);
+    if (timeSpent != -1) {
+        std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
+    }
 
 	return 0;
 }
