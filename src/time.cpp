@@ -24,13 +24,13 @@ int Time::getSeconds () {
 	return this->seconds;
 }
 
-int Time::operator-(const Time& t){
+float Time::operator-(const Time& t){
 	int hours_in_park = this->hour - t.hour;
 	int seconds_in_park = this->seconds - t.seconds;
 	int minutes_in_park = this->minute - t.minute;
 	 
 
-	return ((hours_in_park * 60) + minutes_in_park + (seconds_in_park / 60)); //Returns the ammount of minutes in the park
+	return ((hours_in_park * 60) + minutes_in_park + (seconds_in_park / 60)); //Returns the ammount of minutes 
 }
 
 
