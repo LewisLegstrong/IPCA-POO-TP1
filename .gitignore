@@ -1,4 +1,9 @@
-.vscode/
-*.exe
-obj/
-*.txt
+* 
+
+!inc/
+!src/
+!draw_io/
+!Makefile
+!README.md
+!main.cpp
+!.gitignore
