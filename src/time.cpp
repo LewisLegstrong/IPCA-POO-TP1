@@ -24,7 +24,7 @@ int Time::getSeconds () {
 	return this->seconds;
 }
 
-int Time::operator-(const Time& t){
+int Time::operator-(const Time& t)const{
 	int hours_in_park = this->hour - t.hour;
 	int seconds_in_park = this->seconds - t.seconds;
 	int minutes_in_park = this->minute - t.minute;

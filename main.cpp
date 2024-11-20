@@ -57,5 +57,11 @@ int main() {
     // readFile("file.txt");
     // readFile("carro.txt");
 
+    Time actualHour (17, 30, 0);
+    int timeSpent = myPark.getTimeSpentInPark(licensePlate1, actualHour);
+    if (timeSpent != -1) {
+        std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
+    }
+
 	return 0;
 }

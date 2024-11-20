@@ -29,4 +29,6 @@ std::string IORegistry::getDetails() const { //Function to get the details of th
     return oss.str();
 }
 
-
+int IORegistry::getTimeInPark(const Time &current) const {
+    return current - *entry;
+}

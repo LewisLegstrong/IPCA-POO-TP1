@@ -30,6 +30,7 @@ public:
 	void setExitTime(Time &out);
 	Vehicle* getVehicle() const; 
 	std::string getDetails() const;
+	int getTimeInPark(const Time &current) const;
 };
 
 #endif 		// _PARK_DATA_
