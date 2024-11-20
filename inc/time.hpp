@@ -17,7 +17,7 @@ public:
 	int getMinute();
 	int getSeconds();
 
-	float operator-( const Time& t ); // overload operator -
+	int operator-( const Time& t ); // overload operator -
 };
 
 
