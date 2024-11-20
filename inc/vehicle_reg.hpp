@@ -65,7 +65,8 @@ public:
 
 	/// @brief 		Returns the details of the vehicle as well as entry time registered in the object IORegistry
 	std::string getDetails() const;
-	int getTimeInPark(const Time &current) const;
+
+	int getTimeInPark(Time &current);
 
 	/// @brief get the parked time
 	/// @return parked time in minutes 
