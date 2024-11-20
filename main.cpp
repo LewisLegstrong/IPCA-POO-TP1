@@ -14,23 +14,21 @@ int main() {
     
 
     // Create a Vehicle object with the license plate
-    std::string licensePlate = "ABC123";
+    std::string licensePlate = "97-97-DJ";
     Vehicle myVehicle(licensePlate);
 
     // Create a Time object with the entry time (hours and minutes)
-	Time entryTime(10, 30, 0);
-
+	Time entryTime(8, 30, 0);
     myPark.newEntry(myVehicle, entryTime);
 
 //////////////////////////////////////////////////////////////////////
 
     // Create a Vehicle object with the license plate
-    std::string licensePlate1 = "123ABC";
+    std::string licensePlate1 = "69-CU-69";
     Vehicle myVehicle1(licensePlate1);
 
     // Create a Time object with the entry time (hours and minutes)
 	Time entryTime1(11, 30, 0);
-
     myPark.newEntry(myVehicle1, entryTime1);
 
 //////////////////////////////////////////////////////////////////////
@@ -41,7 +39,7 @@ int main() {
 
 
     //Remove a vehicle from the park
-    Time exitTime(12, 45, 0);
+    Time exitTime(11, 45, 0);
     myPark.removeEntry(licensePlate, exitTime);
 
     // List all vehicles in the park again
@@ -63,11 +61,11 @@ int main() {
 
 
     // Time spent in the park
-    Time actualHour (17, 30, 0);
-    int timeSpent = myPark.getTimeSpentInPark(licensePlate1, actualHour);
-    if (timeSpent != -1) {
-        std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
-    }
+    // Time actualHour (17, 30, 0);
+    // int timeSpent = myPark.getTimeSpentInPark(licensePlate1, actualHour);
+    // if (timeSpent != -1) {
+    //     std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
+    // }
 
 	return 0;
 }
