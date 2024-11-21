@@ -27,8 +27,8 @@ public:
     int getEmptySpots();
     int getOccupiedSpots();
 	int getTimeSpentInPark(const std::string &licensePlate, Time &current) const;
+	bool isParked(std::string &licensePlate);
 
-	//void calculateTicket( std::string license	);
 } ;
 
 #endif 		// _PARK_

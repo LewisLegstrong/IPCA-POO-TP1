@@ -54,17 +54,10 @@ int Park::getTimeSpentInPark(const std::string &licensePlate, Time &current) con
     return -1;
 }
 
-// 
-// float Park::calculateTicket(std::string license) {
-// //     float priceToPay = 0.0;
-
-//     for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
-//         if (i->getVehicle()->getLicensePlate() == license) {
-//             int timeInPark = i->getExitTime() - i->getEntryTime();
-//             if (timeInPark < 60) {
-//                 if ( i->getEntryTime()->getHour() < 8 && i->getExitTime()->getHour() > 20) {
-//                     priceToPay = (timeInPark/15) * 0,20;
-//             }
-//         }
-//     }
-// }
+bool Park::isParked(std::string &licensePlate) {
+    for ( auto unit : parkedVehicles ) {
+        if (unit.getVehicle()->getLicensePlate() == licensePlate)
+            return true;
+    }
+    return false;
+}
