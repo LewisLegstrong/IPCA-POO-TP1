@@ -35,7 +35,7 @@ int IORegistry::getTimeInPark(Time &current) {
 }
 
 int IORegistry::getParkedTime() {
-    return (this->exit->getHour() - this->entry->getHour()); // Returns the parked time in minutes
+    return (*this->exit - *this->entry); // 
 }
 
 int IORegistry::getEntryTime() {
@@ -47,10 +47,10 @@ int IORegistry::getExitTime() {
 }
 
 parkPeriod IORegistry::getParkPeriod() {
-    if ( this->entry->getHour() >= 8 && this->exit->getHour() <= 20 ) {
+    if ( this->getEntryTime() >= 480 && this->getExitTime() <= 1200 ) {
         return parkPeriod::DAY;
     }
-    else if ( this->entry->getHour() >= 20 && this->exit->getHour() <= 8 ) {
+    else if ( this->getEntryTime() >= 1200 && this->getExitTime() <= 480 ) {
         return parkPeriod::EVENING;
     }
     else {
@@ -66,7 +66,8 @@ void IORegistry::calculateTicket() {
 
         case ( parkPeriod::DAY ):
             this->getParkedTime() <= 60 ? this->priceToPay = ( ( this->getParkedTime() / 15 ) * 0.2 ) 
-                                            : this->priceToPay = ( ( 0.8 + ( ( this->getParkedTime() - 60 ) / 15 ) * 0.3 ) ); //0.8eur equivale a 4 tempos completos de 15min a 0.2eur
+                                         : this->priceToPay = ( ( 0.8 + ( ( this->getParkedTime() - 60 ) / 15 ) * 0.3 ) ); //0.8eur equivale a 4 tempos completos de 15min a 0.2eur
+            
             break;
 
         case ( parkPeriod::MIXED ):
@@ -90,9 +91,9 @@ void IORegistry::calculateTicket() {
                 this->priceToPay = ( ( 0.8 + ( ( parkDurationDayPeriod - 60 ) / 15 ) * 0.3 ) );
             }
             this->priceToPay += ( parkDurationNightPeriod / 15 ) * 0.2;
+
             break;
     }
-    std::cout << "Price to pay: " << this->priceToPay << std::endl;
 }
 
 	int IORegistry::getPriceToPay() {
