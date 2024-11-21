@@ -11,7 +11,8 @@ OBJDIR := obj
 SRCFILES := $(wildcard $(SRCDIR)/*.cpp)
 OBJFILES := $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCFILES))
 
-all: clean builddir $(EXEC)$(EXT)
+call: clean all
+all: builddir $(EXEC)$(EXT)
 
 $(EXEC)$(EXT): $(OBJFILES)
 	echo $(OBJFILES)
