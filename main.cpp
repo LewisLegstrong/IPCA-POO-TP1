@@ -18,7 +18,7 @@ int main() {
     Vehicle myVehicle(licensePlate);
 
     // Create a Time object with the entry time (hours and minutes)
-	Time entryTime(18, 30, 0);
+	Time entryTime(11, 30, 0);
     myPark.newEntry(myVehicle, entryTime);
 
 //////////////////////////////////////////////////////////////////////
@@ -37,10 +37,35 @@ int main() {
     //std::cout << "Empty spots: " << myPark.getEmptySpots() << std::endl;
     //std::cout << "Occupied spots: " << myPark.getOccupiedSpots() << std::endl;
 
+    // if (myPark.isParked(licensePlate)) {
+    //     std::cout << licensePlate << "is parked here." << std::endl;
+    // }
+    // else {
+    //     std::cout << licensePlate << "is NOT parked here." << std::endl;
+    // }
+
+
+    Time simulated(19, 30, 0);
+    float simValueToPay = myPark.getSimulatedPriceToReceive( simulated );
+    
+    std::cout << "The park should received " << simValueToPay << " pork chops as payment" << std::endl;
+    
 
     //Remove a vehicle from the park
     Time exitTime(20, 30, 0);
     myPark.removeEntry(licensePlate, exitTime);
+
+    myPark.removeEntry(licensePlate1, exitTime);
+
+    std::cout << "The park has received " << myPark.getAccValue() << " lasagnas as payment" << std::endl;
+
+
+    // if (myPark.isParked(licensePlate)) {
+    // std::cout << licensePlate << "is parked here." << std::endl;
+    // }
+    // else {
+    //     std::cout << licensePlate << "is NOT parked here." << std::endl;
+    // }
 
     // List all vehicles in the park again
     //myPark.listVehicles();
@@ -61,11 +86,11 @@ int main() {
 
 
     //Time spent in the park
-    Time actualHour (17, 30, 0);
-    int timeSpent = myPark.getTimeSpentInPark(licensePlate1, actualHour);
-    if (timeSpent != -1) {
-        std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
-    }
-
+    // Time actualHour (17, 30, 0);
+    // int timeSpent = myPark.getTimeSpentInPark(licensePlate1, actualHour);
+    // if (timeSpent != -1) {
+    //     std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
+    // }
+   
 	return 0;
 }

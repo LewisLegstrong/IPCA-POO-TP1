@@ -52,11 +52,13 @@ public:
 	/// @brief 			Returns the period of the day the car is parked
 	/// @return State used to assist in the calculation of the ticket price 
 	parkPeriod getParkPeriod();
+	parkPeriod simGetParkPeriod( int exitTimeSimulated ); 
 
 	/// @brief Calculates the ticket price
 	/// @details Calculates the ticket price based on the parked time and the period of the day
 	/// @return void
 	void calculateTicket();
+	float simCalculateTicket( Time &exitTimeSimulated );
 
 // Get data functions
 	/// @brief 		Returns the vehicle registered in the object IORegistry
@@ -80,7 +82,8 @@ public:
 	/// @return exit time converted in minutes
 	int getExitTime();
 
-	int getPriceToPay();
+	float getPricePaid();
+
 };
 
 #endif 		// _PARK_DATA_

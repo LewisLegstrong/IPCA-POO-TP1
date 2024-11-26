@@ -28,6 +28,7 @@ void Park::removeEntry(const std::string &licensePlate, Time &out) {
             i->setExitTime(out); // Set the exit time
             std::cout << "Vehicle with license plate " << licensePlate << " has been removed at " 
                       << out.getHour() << ":" << out.getMinute() << ":" << out.getSeconds() << std::endl;
+            sumAccValue( i->getPricePaid() );
             parkedVehicles.erase(i);
             currentVehicles--;
             return;
@@ -54,10 +55,29 @@ int Park::getTimeSpentInPark(const std::string &licensePlate, Time &current) con
     return -1;
 }
 
+void Park::sumAccValue( float pricePaid ) {
+    this->accumulatedValue += pricePaid;
+}
+
 bool Park::isParked(std::string &licensePlate) {
     for ( auto unit : parkedVehicles ) {
         if (unit.getVehicle()->getLicensePlate() == licensePlate)
             return true;
     }
     return false;
+}
+
+float Park::getAccValue() {
+    return this->accumulatedValue;
+}
+
+float Park::getSimulatedPriceToReceive( Time &simulatedTime ) {
+    float toBeReceivedSim = 0.0;
+
+    for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) { 
+        std::cout << "IM IN " << std::endl;
+        toBeReceivedSim += i->simCalculateTicket( simulatedTime );
+    }
+
+    return toBeReceivedSim;
 }
