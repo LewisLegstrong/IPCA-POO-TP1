@@ -1,8 +1,10 @@
+#Ignore all
 * 
 
-!inc/
-!src/
-!draw_io/
+#Except for these:
+!inc/*
+!src/*
+!draw_io/*
 !Makefile
 !README.md
 !main.cpp
