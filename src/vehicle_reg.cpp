@@ -14,7 +14,6 @@ IORegistry::IORegistry(Vehicle &v, Time &in) {
 }
 
 void IORegistry::setExitTime(Time &out) {
-    std::cout << "Exit time set" << std::endl;
 	this->exit = &out;
     this->calculateTicket();
     this->writeToFile();
@@ -45,7 +44,7 @@ int IORegistry::getEntryTime() {
 }
 
 int IORegistry::getExitTime() {
-    return ( ( this->exit->getHour() * 60 ) + this->entry->getMinute() ); // Returns the time of exit in minutes
+    return ( ( this->exit->getHour() * 60 ) + this->exit->getMinute() ); // Returns the time of exit in minutes
 }
 
 parkPeriod IORegistry::getParkPeriod() {
@@ -73,47 +72,60 @@ parkPeriod IORegistry::simGetParkPeriod( int exitTimeSimulated ) {
 }
 
 void IORegistry::calculateTicket( ) {
-    std::cout << "Calculating ticket" << std::endl;
     switch ( this->getParkPeriod( ) ) {
         case ( parkPeriod::EVENING ):
-            std::cout << "Evening" << std::endl;
             this->priceToPay = ( this->getParkedTime() / 15 ) * 0.2;
             break;
 
         case ( parkPeriod::DAY ):
-            std::cout << "Day" << std::endl;
             this->getParkedTime() <= 60 ? this->priceToPay = ( ( this->getParkedTime() / 15 ) * 0.2 ) 
                                         : this->priceToPay = ( ( 0.8 + ( ( this->getParkedTime() - 60 ) / 15 ) * 0.3 ) ); //0.8eur equivale a 4 tempos completos de 15min a 0.2eur
             break;
 
         case ( parkPeriod::MIXED ):
-            std::cout << "Misgendered" << std::endl;
             int parkDurationDayPeriod = 0;
             int parkDurationNightPeriod = 0;
             
             // Separa o tempo de parque das 8-20 e das 20-8
-            if ( this->getEntryTime() >= 480 &&  this->getEntryTime() < 1200) {
-                parkDurationDayPeriod = 1200 - this->getEntryTime();
-                if (this->getExitTime() >= 0 && this->getExitTime() <= 480 )    // Perceber se saiu antes ou depois das 00:00     
-                    parkDurationNightPeriod = 240 + ( this->getExitTime() );  // 1200 equivale as 20h da noite em ponto                                                                      
+            if ( this->getEntryTime() >= 480 && this->getEntryTime() < 1200) {      //Caso entre de manha
+                parkDurationDayPeriod = 1200 - this->getEntryTime();                //Periodo de parque matinal e sempre as 20 - hora de entrada
+
+                if (this->getExitTime() >= 0 && this->getExitTime() <= 480 )    // Entre a 00_00 e as 8:00    
+                    parkDurationNightPeriod = 240 + ( this->getExitTime() );    // Soma o valor das 20:00 às 24:00 em minutos ao valor daa hora de saída                                                               
                 else
-                    parkDurationNightPeriod = this->getExitTime() - 1200;  // 1200 equivale as 20h da noite em ponto 
-            }
-            else if ( this->getEntryTime() >= 1200 ){
-                if ( this->getEntryTime() < 1440)
-                    parkDurationNightPeriod = this->getEntryTime() - 1200;  // 1200 equivale as 20h da noite em ponto
-
-                parkDurationNightPeriod = this->getEntryTime() - 1200;  // 1200 equivale as 20h da noite em ponto 
-                parkDurationDayPeriod = 1200 - this->getExitTime();
-
+                    parkDurationNightPeriod = this->getExitTime() - 1200;       // 1200 equivale as 20h da noite em ponto 
             }
 
+            else if ( this->getEntryTime() >= 1200 || this->getEntryTime() < 480){
+                if ( this->getEntryTime() >= 1200 && this->getEntryTime() <= 1439) {       
+                    parkDurationNightPeriod = ( 1440 - this->getEntryTime() ) + 480 ;  //Se entrar antes da meia noite, eu ja sei que la passa a noite. Logo somo as 8h da manha a partir da madrugada mais o valor em minutos desde que entrou ate a meia noite
+                }
+                else if ( this->getEntryTime() >= 0 && this->getEntryTime() < 480) {
+                    parkDurationNightPeriod = 480 - this->getEntryTime();               //Se entrou depois da meia noite, o tempo que la passou e so desde as 8 ate a hora que entrou
+                }
+                
+                //         || ( this->getEntryTime() >= 0 && this->getExitTime () < 480) ) {   //Entra depois das 0 e sai antes das 8
+                //     parkDurationNightPeriod = ( this->getExitTime() - this->getEntryTime() );   
+                // }
+                // else if (this->getEntryTime() <= 1439 && this->getExitTime() > 0) {          //Entra antes da 24:00 e sai depois das 00:00
+                //     parkDurationNightPeriod = ( 1440 - this->getEntryTime() ) + this->getExitTime();
+                // }
+                // else
+                std::cout << "Hora de saida e: " << this->getExitTime() << std::endl;
+                parkDurationDayPeriod = this->getExitTime() - 480;
+            }
+
+
+            // Calcula o valor a pagar
             if ( parkDurationDayPeriod <= 60 ) {
                 this->priceToPay = ( ( parkDurationDayPeriod / 15 ) * 0.2 );
             }
             else {
                 this->priceToPay = ( ( 0.8 + ( ( parkDurationDayPeriod - 60 ) / 15 ) * 0.3 ) );
             }
+
+            std::cout << "DayTime: " << parkDurationDayPeriod << std::endl ;
+            std::cout << "NightTime: " << parkDurationNightPeriod << std::endl ;
             this->priceToPay += ( parkDurationNightPeriod / 15 ) * 0.2;
             break;
     }
