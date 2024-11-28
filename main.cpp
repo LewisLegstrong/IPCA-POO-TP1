@@ -14,8 +14,8 @@ int main() {
     
 
     // // Create a Vehicle object with the license plate
-    // std::string licensePlate = "97-97-DJ";
-    // Vehicle myVehicle(licensePlate);
+    std::string licensePlate = "97-97-DJ";
+    Vehicle myVehicle(licensePlate);
 
     // // Create a Time object with the entry time (hours and minutes)
 	// Time entryTime(11, 30, 0);
@@ -92,13 +92,21 @@ int main() {
     //     std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
     // }
 
-    Time entryTime3(16, 45, 0);
-    myPark.newEntry(myVehicle1, entryTime3);
+    // Time entryTime3(16, 45, 0);
+    // myPark.newEntry(myVehicle1, entryTime3);
     
-    Time exitTime3(6, 45, 0);
-    myPark.removeEntry(licensePlate1, exitTime3);
+    // Time exitTime3(6, 45, 0);
+    // myPark.removeEntry(licensePlate1, exitTime3);
     
 
+
+    
+    Time entryTime4(7, 15, 0);
+    myPark.newEntry(myVehicle, entryTime4);
+    
+    Time exitTime4(11, 0, 0);
+    myPark.removeEntry(licensePlate, exitTime4);
+    
 
     // // Consult historic
     // myPark.consultHistoric(licensePlate1 + ".txt");   
