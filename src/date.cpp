@@ -18,5 +18,3 @@ int Date::getYear() {
 	return this->year;
 }
 
-
-

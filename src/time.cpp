@@ -33,4 +33,6 @@ int Time::operator-(const Time& t){
 	return ((hours_in_park * 60) + minutes_in_park + (seconds_in_park / 60)); //Returns the ammount of minutes 
 }
 
-
+std::string Time::getTime() {
+	return (std::to_string(this->hour) + ":" + std::to_string(this->minute) + ":" + std::to_string(this->seconds));
+}

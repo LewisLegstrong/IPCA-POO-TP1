@@ -8,6 +8,7 @@
 
 #include "time.hpp"
 #include "vehicle_reg.hpp"
+#include "file_manipulation.hpp"
 
 class Park {
 public: 
@@ -34,7 +35,7 @@ public:
 	
 	float getAccValue();
 	float getSimulatedPriceToReceive( Time &simulatedTime );
-
+	void consultHistoric(std::string licensePlate);
 } ;
 
 #endif 		// _PARK_

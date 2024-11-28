@@ -81,3 +81,7 @@ float Park::getSimulatedPriceToReceive( Time &simulatedTime ) {
 
     return toBeReceivedSim;
 }
+
+void Park::consultHistoric(std::string licensePlate) {
+    readFile(licensePlate);
+}

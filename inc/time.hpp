@@ -2,6 +2,7 @@
 #define _TIME_HPP_
 
 #include <iostream>
+#include <string>
 
 class Time {
 public:
@@ -16,6 +17,7 @@ public:
 	int getHour();
 	int getMinute();
 	int getSeconds();
+	std::string getTime();
 
 	int operator-( const Time& t ); // overload operator -
 };

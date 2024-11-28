@@ -16,6 +16,8 @@ IORegistry::IORegistry(Vehicle &v, Time &in) {
 void IORegistry::setExitTime(Time &out) {
 	this->exit = &out;
     this->calculateTicket();
+    this->writeToFile();
+
 }
 
 Vehicle* IORegistry::getVehicle() const {
@@ -156,4 +158,10 @@ float IORegistry::simCalculateTicket( Time &exitTimeSimulated ) {
 
 float IORegistry::getPricePaid() {
     return this->priceToPay;
+}
+
+void IORegistry::writeToFile() {
+    std::string fileContent = "Hora de entrada " + this->entry->getTime() + " Hora de saida " + this->exit->getTime() + " Preco a pagar " + std::to_string(this->priceToPay) + "\n";
+    appendToFile(information->getLicensePlate() + ".txt", fileContent);
+    
 }

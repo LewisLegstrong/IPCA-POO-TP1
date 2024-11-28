@@ -91,6 +91,15 @@ int main() {
     // if (timeSpent != -1) {
     //     std::cout << "Vehicle with license plate " << licensePlate << " has been in the park for " << timeSpent << " minutes." << std::endl;
     // }
-   
+
+    Time entryTime3(16, 45, 0);
+    myPark.newEntry(myVehicle1, entryTime3);
+    Time exitTime3(06, 45, 0);
+    myPark.removeEntry(licensePlate1, exitTime3);
+    
+
+
+    // Consult historic
+    myPark.consultHistoric(licensePlate1 + ".txt");   
 	return 0;
 }

@@ -7,6 +7,7 @@
 #include <sstream>
 
 #include "time.hpp"
+#include "file_manipulation.hpp"
 
 /// @brief Enum class to define the period of the day the car is parked
 enum class parkPeriod {   // enforces type
@@ -84,6 +85,7 @@ public:
 
 	float getPricePaid();
 
+	void writeToFile();
 };
 
 #endif 		// _PARK_DATA_
