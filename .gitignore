@@ -2,8 +2,12 @@
 * 
 
 #Except for these:
+!inc/
 !inc/*
+!src/
 !src/*
+!main_tests
+!main_tests/*
 !draw_io/*
 !Makefile
 !README.md
