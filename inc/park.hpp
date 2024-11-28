@@ -26,6 +26,7 @@ public:
 	void newEntry (Vehicle &v, Time &in);
 	void removeEntry(const std::string &licensePlate, Time &out);
 	void sumAccValue( float pricePaid );
+	void consultHistoric( std::string licensePlate );
 
     int getEmptySpots();
     int getOccupiedSpots();
@@ -35,7 +36,6 @@ public:
 	
 	float getAccValue();
 	float getSimulatedPriceToReceive( Time &simulatedTime );
-	void consultHistoric(std::string licensePlate);
 } ;
 
 #endif 		// _PARK_

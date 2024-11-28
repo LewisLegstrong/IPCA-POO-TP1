@@ -13,13 +13,13 @@ int main() {
     Park myPark(10);
     
 
-    // Create a Vehicle object with the license plate
-    std::string licensePlate = "97-97-DJ";
-    Vehicle myVehicle(licensePlate);
+    // // Create a Vehicle object with the license plate
+    // std::string licensePlate = "97-97-DJ";
+    // Vehicle myVehicle(licensePlate);
 
-    // Create a Time object with the entry time (hours and minutes)
-	Time entryTime(11, 30, 0);
-    myPark.newEntry(myVehicle, entryTime);
+    // // Create a Time object with the entry time (hours and minutes)
+	// Time entryTime(11, 30, 0);
+    // myPark.newEntry(myVehicle, entryTime);
 
 //////////////////////////////////////////////////////////////////////
 
@@ -27,9 +27,9 @@ int main() {
     std::string licensePlate1 = "69-CU-69";
     Vehicle myVehicle1(licensePlate1);
 
-    // Create a Time object with the entry time (hours and minutes)
-	Time entryTime1(11, 30, 0);
-    myPark.newEntry(myVehicle1, entryTime1);
+    // // Create a Time object with the entry time (hours and minutes)
+	// Time entryTime1(11, 30, 0);
+    // myPark.newEntry(myVehicle1, entryTime1);
 
 //////////////////////////////////////////////////////////////////////
     
@@ -45,19 +45,19 @@ int main() {
     // }
 
 
-    Time simulated(19, 30, 0);
-    float simValueToPay = myPark.getSimulatedPriceToReceive( simulated );
+    // Time simulated(19, 30, 0);
+    // float simValueToPay = myPark.getSimulatedPriceToReceive( simulated );
     
-    std::cout << "The park should received " << simValueToPay << " pork chops as payment" << std::endl;
+    // std::cout << "The park should received " << simValueToPay << " pork chops as payment" << std::endl;
     
 
-    //Remove a vehicle from the park
-    Time exitTime(20, 30, 0);
-    myPark.removeEntry(licensePlate, exitTime);
+    // // //Remove a vehicle from the park
+    // // Time exitTime(20, 30, 0);
+    // myPark.removeEntry(licensePlate, exitTime);
 
-    myPark.removeEntry(licensePlate1, exitTime);
+    // myPark.removeEntry(licensePlate1, exitTime);
 
-    std::cout << "The park has received " << myPark.getAccValue() << " lasagnas as payment" << std::endl;
+    // std::cout << "The park has received " << myPark.getAccValue() << " lasagnas as payment" << std::endl;
 
 
     // if (myPark.isParked(licensePlate)) {
@@ -94,12 +94,13 @@ int main() {
 
     Time entryTime3(16, 45, 0);
     myPark.newEntry(myVehicle1, entryTime3);
-    Time exitTime3(06, 45, 0);
+    
+    Time exitTime3(6, 45, 0);
     myPark.removeEntry(licensePlate1, exitTime3);
     
 
 
-    // Consult historic
-    myPark.consultHistoric(licensePlate1 + ".txt");   
+    // // Consult historic
+    // myPark.consultHistoric(licensePlate1 + ".txt");   
 	return 0;
 }
