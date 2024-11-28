@@ -25,5 +25,5 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CC) -I./$(INCDIR)/ -c -o $@ $<
 
 clean:
-	del /f /q $(OBJDIR) $(EXEC).exe $(EXEC)
+	del /f /q $(OBJDIR) $(EXEC).exe $(EXEC) *.txt
 	rmdir /s /q $(OBJDIR)
