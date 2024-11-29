@@ -1,4 +1,7 @@
 #include "park.hpp"
+#include "vehicle_reg.hpp"
+#include "time.hpp"
+#include <iostream>
 
 int main() {
 
@@ -66,8 +69,8 @@ int main() {
 
     // Create a Time object with the entry time (hours and minutes)
     std::cout << "Create a Time object with the entry time." << std::endl;
-	Time entryTime1(11, 30, 0);
-    myPark.newEntry(hondaCivic, entryTime1);
+	Time entryTime3(11, 30, 0);
+    myPark.newEntry(hondaCivic, entryTime3);
 
     // Consult historic
     std::cout << "Consults historic." << std::endl;

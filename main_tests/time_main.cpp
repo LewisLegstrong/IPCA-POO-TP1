@@ -9,7 +9,11 @@ int main() {
     // Hora entre antes das 08:00 e sai depois 08:00 mas antes das 20:00
     Time entryTime2(7, 45, 0);
     Time exitTime2(11, 15, 0);
+    std::cout << entryTime2.getHour() << std::endl;
+    std::cout << entryTime2.getMinute() << std::endl;
+    std::cout << entryTime2.getSeconds() << std::endl;
 
+    
     // Hora entre depois das 08:00 e sai antes das 20:00 
     Time entryTime3(10, 30, 0);
     Time exitTime3(19, 0, 0);

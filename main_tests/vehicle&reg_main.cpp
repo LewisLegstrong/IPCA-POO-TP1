@@ -11,6 +11,5 @@ int main() {
     Vehicle myVehicle1(licensePlate1);
 
     
-    std::string getLicensePlate();
     std::cout << "Matricula do Vehicle1: "  << myVehicle1.getLicensePlate() << std::endl;
 }
