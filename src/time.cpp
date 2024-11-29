@@ -2,15 +2,21 @@
 
 
 Time::Time( int h, int m, int s ) {
-	if (( (h <= 23) && (h >= 0) ) && ( (m < 60) && (m >= 0) ) && ( (s < 60) && (s >= 0) )) {	
-		this->hour = h;  
-		this->minute = m;
-		this->seconds = s;
-	}
-	else {
-		std::cerr << "Seu burro!"; //Try Catch implementation here
+	try {
+		if (( (h <= 23) && (h >= 0) ) && ( (m < 60) && (m >= 0) ) && ( (s < 60) && (s >= 0) )) {	
+			this->hour = h;  
+			this->minute = m;
+			this->seconds = s;
+		}
+		else {
+			throw std::invalid_argument("Invalid time");
+		}
+	} 
+	catch (std::exception& e) {
+		std::cerr << "Invalid time" << std::endl;
 	}
 }
+
 
 int Time::getHour() {
 	return this->hour;
