@@ -6,9 +6,9 @@
 
 class Time {
 public:
-	Time( int h, int m, int s); // constructor
+	Time( int h, int m, int s ); // constructor
 
-private:
+protected:
 	int hour;
 	int minute;
 	int seconds;
@@ -17,6 +17,7 @@ public:
 	int getHour();
 	int getMinute();
 	int getSeconds();
+
 	std::string getTime();
 
 	int operator-( const Time& t ); // overload operator -
