@@ -1,74 +1,14 @@
-#include "vehicle_reg.hpp"
+#include "registry.hpp"
 
-Vehicle::Vehicle(std::string lp) {
-	this->license_plate = lp;
-}
-
-std::string Vehicle::getLicensePlate() {
-	return this->license_plate;
-}
-
-IORegistry::IORegistry(Vehicle &v, Time &in) {
+IORegistry::IORegistry(Vehicle &v, dateTime &in) {
 	this->information = &v;
 	this->entry = &in;
 }
 
-void IORegistry::setExitTime(Time &out) {
+void IORegistry::setExitTime(dateTime &out) {
 	this->exit = &out;
     this->calculateTicket();
     this->writeToFile();
-}
-
-Vehicle* IORegistry::getVehicle() const {
-    return information;
-}
-
-
-std::string IORegistry::getDetails() const { //Function to get the details of the vehicle
-    std::ostringstream oss; //String stream to concatenate the information
-    oss << "License Plate: " << information->getLicensePlate()
-        << ", Entry Time: " << entry->getHour() << ":" << entry->getMinute();
-    return oss.str();
-}
-
-int IORegistry::getTimeInPark(Time &current) {
-    return (current - *entry);
-}
-
-int IORegistry::getParkedTime() {
-    return (*this->exit - *this->entry); // 
-}
-
-int IORegistry::getEntryTime() {
-    return ( ( this->entry->getHour() * 60 ) + this->entry->getMinute()  ); // Returns the time of entrance in minutes
-}
-
-int IORegistry::getExitTime() {
-    return ( ( this->exit->getHour() * 60 ) + this->exit->getMinute() ); // Returns the time of exit in minutes
-}
-
-parkPeriod IORegistry::getParkPeriod() {
-    if ( ( this->getEntryTime() >= 480  && this->getEntryTime() < 1200) && ( this->getExitTime() <= 1200 &&  this->getExitTime() > 480 ) ) {
-        return parkPeriod::DAY;
-    }
-    else if ( this->getEntryTime() >= 1200 && this->getExitTime() <= 480 ) {
-        return parkPeriod::EVENING;
-    }
-    else {
-        return parkPeriod::MIXED;
-    }
-}
-
-parkPeriod IORegistry::simGetParkPeriod( int exitTimeSimulated ) { 
-    if ( this->getEntryTime() >= 480 && exitTimeSimulated <= 1200 ) {
-        return parkPeriod::DAY;
-    }
-    else if ( this->getEntryTime() >= 1200 && exitTimeSimulated <= 480 ) {
-        return parkPeriod::EVENING;
-    }
-    else {
-        return parkPeriod::MIXED;
-    }
 }
 
 void IORegistry::calculateTicket( ) {
@@ -87,30 +27,23 @@ void IORegistry::calculateTicket( ) {
             int parkDurationNightPeriod = 0;
             
             // Separa o tempo de parque das 8-20 e das 20-8
-            if ( this->getEntryTime() >= 480 && this->getEntryTime() < 1200) {      //Caso entre de manha
-                parkDurationDayPeriod = 1200 - this->getEntryTime();                //Periodo de parque matinal e sempre as 20 - hora de entrada
+            if ( this->getEntryTime() >= 480 && this->getEntryTime() < 1200) {          //Caso entre de manha
+                parkDurationDayPeriod = 1200 - this->getEntryTime();                    //Periodo de parque matinal e sempre as 20 - hora de entrada
 
-                if (this->getExitTime() >= 0 && this->getExitTime() <= 480 )    // Entre a 00_00 e as 8:00    
-                    parkDurationNightPeriod = 240 + ( this->getExitTime() );    // Soma o valor das 20:00 às 24:00 em minutos ao valor daa hora de saída                                                               
+                if (this->getExitTime() >= 0 && this->getExitTime() <= 480 )            // Entre a 00_00 e as 8:00    
+                    parkDurationNightPeriod = 240 + ( this->getExitTime() );            // Soma o valor das 20:00 às 24:00 em minutos ao valor daa hora de saída                                                               
                 else
-                    parkDurationNightPeriod = this->getExitTime() - 1200;       // 1200 equivale as 20h da noite em ponto 
+                    parkDurationNightPeriod = this->getExitTime() - 1200;               // 1200 equivale as 20h da noite em ponto 
             }
 
             else if ( this->getEntryTime() >= 1200 || this->getEntryTime() < 480){
                 if ( this->getEntryTime() >= 1200 && this->getEntryTime() <= 1439) {       
-                    parkDurationNightPeriod = ( 1440 - this->getEntryTime() ) + 480 ;  //Se entrar antes da meia noite, eu ja sei que la passa a noite. Logo somo as 8h da manha a partir da madrugada mais o valor em minutos desde que entrou ate a meia noite
+                    parkDurationNightPeriod = ( 1440 - this->getEntryTime() ) + 480 ;   //Se entrar antes da meia noite, eu ja sei que la passa a noite. Logo somo as 8h da manha a partir da madrugada mais o valor em minutos desde que entrou ate a meia noite
                 }
                 else if ( this->getEntryTime() >= 0 && this->getEntryTime() < 480) {
                     parkDurationNightPeriod = 480 - this->getEntryTime();               //Se entrou depois da meia noite, o tempo que la passou e so desde as 8 ate a hora que entrou
                 }
                 
-                //         || ( this->getEntryTime() >= 0 && this->getExitTime () < 480) ) {   //Entra depois das 0 e sai antes das 8
-                //     parkDurationNightPeriod = ( this->getExitTime() - this->getEntryTime() );   
-                // }
-                // else if (this->getEntryTime() <= 1439 && this->getExitTime() > 0) {          //Entra antes da 24:00 e sai depois das 00:00
-                //     parkDurationNightPeriod = ( 1440 - this->getEntryTime() ) + this->getExitTime();
-                // }
-                // else
                 std::cout << "Hora de saida e: " << this->getExitTime() << std::endl;
                 parkDurationDayPeriod = this->getExitTime() - 480;
             }
@@ -131,7 +64,29 @@ void IORegistry::calculateTicket( ) {
     }
 }
 
-float IORegistry::simCalculateTicket( Time &exitTimeSimulated ) {
+void IORegistry::writeToFile() {
+    std::string fileContent = "Hora de entrada " + this->entry->getTime() + " Hora de saida " + this->exit->getTime() + " Preco a pagar " + std::to_string(this->priceToPay) + "\n";
+    appendToFile(information->getLicensePlate() + ".txt", fileContent);
+    
+}
+
+int IORegistry::getTimeInPark(dateTime &current) {
+    return (current - *entry);
+}
+
+int IORegistry::getParkedTime() {
+    return (*this->exit - *this->entry); 
+}
+
+int IORegistry::getEntryTime() {
+    return ( ( this->entry->getHour() * 60 ) + this->entry->getMinute()  ); // Returns the time of entrance in minutes
+}
+
+int IORegistry::getExitTime() {
+    return ( ( this->exit->getHour() * 60 ) + this->exit->getMinute() ); // Returns the time of exit in minutes
+}
+
+float IORegistry::simCalculateTicket( dateTime &exitTimeSimulated ) {
     int parkedTime = exitTimeSimulated - *this->entry;
     float priceToPaySim = 0.00;
 
@@ -177,13 +132,42 @@ float IORegistry::simCalculateTicket( Time &exitTimeSimulated ) {
     return priceToPaySim;
 }
 
-
 float IORegistry::getPricePaid() {
     return this->priceToPay;
 }
 
-void IORegistry::writeToFile() {
-    std::string fileContent = "Hora de entrada " + this->entry->getTime() + " Hora de saida " + this->exit->getTime() + " Preco a pagar " + std::to_string(this->priceToPay) + "\n";
-    appendToFile(information->getLicensePlate() + ".txt", fileContent);
-    
+std::string IORegistry::getDetails() const { //Function to get the details of the vehicle
+    std::ostringstream oss; //String stream to concatenate the information
+    oss << "License Plate: " << information->getLicensePlate()
+        << ", Entry Time: " << entry->getHour() << ":" << entry->getMinute();
+    return oss.str();
 }
+
+parkPeriod IORegistry::getParkPeriod() {
+    if ( ( this->getEntryTime() >= 480  && this->getEntryTime() < 1200) && ( this->getExitTime() <= 1200 &&  this->getExitTime() > 480 ) ) {
+        return parkPeriod::DAY;
+    }
+    else if ( this->getEntryTime() >= 1200 && this->getExitTime() <= 480 ) {
+        return parkPeriod::EVENING;
+    }
+    else {
+        return parkPeriod::MIXED;
+    }
+}
+
+parkPeriod IORegistry::simGetParkPeriod( int exitTimeSimulated ) { 
+    if ( this->getEntryTime() >= 480 && exitTimeSimulated <= 1200 ) {
+        return parkPeriod::DAY;
+    }
+    else if ( this->getEntryTime() >= 1200 && exitTimeSimulated <= 480 ) {
+        return parkPeriod::EVENING;
+    }
+    else {
+        return parkPeriod::MIXED;
+    }
+}
+
+Vehicle* IORegistry::getVehicle() const {
+    return information;
+}
+
