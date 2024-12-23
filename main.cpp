@@ -7,10 +7,11 @@
 #include "vehicle_reg.hpp"
 #include "park.hpp"
 #include "file_manipulation.hpp"
+#include "dateTime.hpp"
 
 int main() {
     // Create a Park object with a capacity of 10
-    Park myPark(10);
+    Park myPark(10, "Braga");
     
 
     // // Create a Vehicle object with the license plate
@@ -108,6 +109,10 @@ int main() {
     myPark.removeEntry(licensePlate, exitTime4);
     
 
+    dateTime registry1 ( 12, 12, 2024, 12, 12, 12 );
+    std::cout << "Day: " << registry1.getDay() << "Month:" << registry1.getMonth() << "Year:"<< registry1.getYear() << std::endl;
+    std::cout << "Hour: " << registry1.getHour() << "Minute:" << registry1.getMinute() << "Seconds:"<< registry1.getSeconds() << std::endl;
+    
     // // Consult historic
     // myPark.consultHistoric(licensePlate1 + ".txt");   
 	return 0;
