@@ -7,7 +7,7 @@ class Date {
 public: 	
 	Date (int d, int m, int y);
 
-private: 
+protected: 
 	int day;
 	int month;
 	int year;
