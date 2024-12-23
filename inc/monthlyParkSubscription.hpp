@@ -6,16 +6,15 @@
 
 class monthlyParkSubscription {
 public:
-	monthlyParkSubscription();
+	monthlyParkSubscription(int nifRegister, Vehicle *vehicleRegister);
 
 private:
 	int 		nif;
 	bool 		isActive;
-	Vehicle 	vehicle;
-	std::string clientName;
+	Vehicle 	*registeredVehicle;
 
 public:
-
+	bool 	getIsActive();
 	 
 
 
