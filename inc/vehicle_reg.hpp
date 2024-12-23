@@ -83,8 +83,10 @@ public:
 	/// @return exit time converted in minutes
 	int getExitTime();
 
+	/// @brief get the price paid
 	float getPricePaid();
 
+	/// @brief Creates the string that will go the history file
 	void writeToFile();
 };
 
