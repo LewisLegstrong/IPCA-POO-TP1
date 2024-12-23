@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="gu6o751cEPqCVZNXGPYs">
-        <mxGraphModel dx="1123" dy="856" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="689" dy="1649" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -113,87 +113,93 @@
                 <mxCell id="16" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Consulta Parque&lt;/h1&gt;&lt;p&gt;Pesquisa por :&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;&lt;font color=&quot;#60a917&quot;&gt;Lugares Livres&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font color=&quot;#60a917&quot;&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#9;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lugares Ocupados&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font color=&quot;#60a917&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;Matriculas no Parque com hora de entrada&lt;/font&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;Historico de € recebido&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;Estimar o valor a ser pago pelos veiculos ainda estacionados (simulando uma determinada hora)&lt;br&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="627.5" y="1110" width="360" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="17" target="20" edge="1">
+                <mxCell id="21" value="" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" source="17" target="20" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="277.37" y="1790"/>
-                            <mxPoint x="79.37" y="1790"/>
+                            <mxPoint x="240" y="2000"/>
+                            <mxPoint x="130" y="2000"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="29" value="Ficheiro da matricula" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="21" vertex="1" connectable="0">
+                <mxCell id="29" value="Ficheiro da matricula" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" parent="21" vertex="1" connectable="0">
                     <mxGeometry x="0.1938" y="-2" relative="1" as="geometry">
-                        <mxPoint x="23" as="offset"/>
+                        <mxPoint x="-18" y="40" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="37" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="17" target="18" edge="1">
+                <mxCell id="37" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" source="17" target="18" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="277.37" y="1860"/>
+                            <mxPoint x="240" y="2000"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="17" value="Registo de Entrada de veiculo" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="216.87" y="1700" width="120" height="60" as="geometry"/>
+                <mxCell id="17" value="Registo de Entrada de veiculo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="1900" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="" style="edgeStyle=none;html=1;" parent="1" source="18" target="22" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" style="edgeStyle=none;html=1;" parent="1" source="18" target="35" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="269.37" y="1970" as="targetPoint"/>
+                        <mxPoint x="270" y="2110" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="409.37" y="1930"/>
-                            <mxPoint x="269.37" y="1930"/>
+                            <mxPoint x="410" y="2070"/>
+                            <mxPoint x="270" y="2070"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="18" value="Vetor de Veiculos no parque" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="349.37" y="1830" width="120" height="60" as="geometry"/>
+                <mxCell id="18" value="Vetor de Veiculos no parque" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="1970" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="" style="edgeStyle=none;html=1;" parent="1" source="20" target="24" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="20" value="Historico do parque" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="18.74000000000001" y="1820" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="70.00000000000001" y="2110" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="Consultar se está estacionado?" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="349.37" y="1970" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="350" y="2110" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="Tempo total de estacionamento" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="18.74000000000001" y="1924" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="70.00000000000001" y="2200" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="" style="edgeStyle=none;html=1;" parent="1" source="26" target="30" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="31" value="" style="edgeStyle=none;html=1;strokeColor=#99FF99;" parent="1" source="26" target="30" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="579" y="1800"/>
+                            <mxPoint x="660" y="1800"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="32" style="edgeStyle=none;html=1;" parent="1" source="26" target="33" edge="1">
+                <mxCell id="32" style="edgeStyle=none;html=1;strokeColor=#99FF99;" parent="1" source="26" target="33" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="729.3700000000001" y="1830" as="targetPoint"/>
                         <Array as="points">
                             <mxPoint x="579.37" y="1800"/>
                             <mxPoint x="729.3700000000001" y="1800"/>
+                            <mxPoint x="810" y="1800"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="36" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="26" target="18" edge="1">
+                <mxCell id="153" value="" style="edgeStyle=none;html=1;strokeColor=#99FF99;" edge="1" parent="1" source="26" target="152">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="579.37" y="1800"/>
-                            <mxPoint x="409.37" y="1800"/>
+                            <mxPoint x="579" y="1800"/>
+                            <mxPoint x="500" y="1800"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="Parque" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                <mxCell id="26" value="Parque" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
                     <mxGeometry x="519.37" y="1660" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="Consulta de lugares ocupados" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="519.37" y="1830" width="120" height="60" as="geometry"/>
+                <mxCell id="30" value="Consulta de lugares ocupados" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+                    <mxGeometry x="601.23" y="1830" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="Consulta de lugares livres" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="669.3700000000001" y="1830" width="120" height="60" as="geometry"/>
+                <mxCell id="33" value="Consulta de lugares livres" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+                    <mxGeometry x="751.2300000000001" y="1830" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="Lista de viaturas no parque" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="209.37" y="1970" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="210" y="2110" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="Parque" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1060" y="251" width="300" height="278" as="geometry"/>
@@ -393,6 +399,29 @@
                 </mxCell>
                 <mxCell id="150" value="Inidicar meses pagos por um cliente, periodos de estacionamento usados" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="137" vertex="1">
                     <mxGeometry y="180" width="410" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="152" value="Vetor de Avencas" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                    <mxGeometry x="440.62" y="1830" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="155" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#f0a30a;strokeColor=#BD7000;" edge="1" parent="1" source="154" target="152">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="310" y="1860"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="154" value="Registo de Nova avenca" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="1780" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#99FF99;" edge="1" parent="1" target="18">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="580" y="1800"/>
+                            <mxPoint x="410" y="1800"/>
+                        </Array>
+                        <mxPoint x="580" y="1720" as="sourcePoint"/>
+                        <mxPoint x="410.63" y="2070" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
