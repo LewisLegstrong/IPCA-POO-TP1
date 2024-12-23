@@ -10,6 +10,7 @@ main_tests/*.exe
 !src/*
 !main_tests/
 !draw_io/*
+!draw_io/UML_projeto.drawio
 !Makefile
 !README.md
 !main.cpp
