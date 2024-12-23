@@ -2,15 +2,18 @@
 #include <sstream>
 #include <string>
 
-#include "time.hpp"
+//#include "time.hpp"
 #include "date.hpp"
 #include "dateTime.hpp"
 #include "vehicle_reg.hpp"
 #include "park.hpp"
 #include "file_manipulation.hpp"
+#include "menu.hpp"
 
 int main() {
 
+    Menu menu;
+    menu.handleUserInput();
 
     return 0;
 //     // Create a Park object with a capacity of 10
