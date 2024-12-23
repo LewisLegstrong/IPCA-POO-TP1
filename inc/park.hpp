@@ -12,13 +12,13 @@
 
 class Park {
 public: 
-    Park(int capacity);  //Constructor
+    Park(int capacity, std::string parkLocation);  //Constructor
 
 private: 
 	int maxCapacity;
 	int currentVehicles;
 	float accumulatedValue = 0.0 ;
-
+	std::string city;
 	std::vector<IORegistry> parkedVehicles; 
 
 public:

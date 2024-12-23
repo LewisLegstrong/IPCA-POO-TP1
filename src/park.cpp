@@ -6,10 +6,11 @@ void Park::listVehicles() {
     }
 }
 
-Park::Park(int capacity)
+Park::Park(int capacity, std::string parkLocation)
 {
-    maxCapacity = capacity;
-    currentVehicles = 0;
+    this->city = parkLocation;
+    this->maxCapacity = capacity;
+    this->currentVehicles = 0;
 }
 
 void Park::newEntry(Vehicle &v, Time &in) {
