@@ -1,4 +1,4 @@
-#include "../inc/file_manipulation.hpp"
+#include "file_manipulation.hpp"
 
 void writeNewFile(std::string fileName, std::string bufferToWrite) {
     std::fstream myFile;
