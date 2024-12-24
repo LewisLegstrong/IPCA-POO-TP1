@@ -1,5 +1,6 @@
 #include "menu.hpp"
 
+GestPark gestPark;
 
 Menu::Menu() {
     // Constructor implementation
@@ -23,6 +24,8 @@ void Menu::displayMenu() {
 
 void Menu::handleUserInput() {
     int choice;
+    std::string city;
+    int capacity;
     do {
         displayMenu();
         std::cout << "Enter your choice: ";
@@ -32,11 +35,18 @@ void Menu::handleUserInput() {
 
             case menuOptions::REGISTER_PARK_TO_CITY:
                 std::cout << "Register Park to City selected." << std::endl;
-                void insertParkInCity ( ); //precisa ser feita a função
+                std::cout << "Choose City You Want To Create Park: ";
+                std::cin >> city;
+                std::cout << "Capacity: ";
+                std::cin >> capacity;
+                gestPark.insertParkInCity( city, capacity );
                 break;
 
             case menuOptions::LIST_PARKS:
                 std::cout << "List Parks selected." << std::endl;
+                std::cout << "Choose City You Want To List Park: ";
+                std::cin >> city;
+                gestPark.listParksInCity (city);
                 break;
 
             case menuOptions::REGISTER_ENTRY_VEHICLE:   

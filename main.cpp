@@ -5,15 +5,28 @@
 //#include "time.hpp"
 #include "date.hpp"
 #include "dateTime.hpp"
-#include "vehicle_reg.hpp"
-#include "park.hpp"
+#include "vehicle.hpp"
+#include "registry.hpp"
 #include "file_manipulation.hpp"
 #include "menu.hpp"
+#include "park.hpp"
 
 int main() {
+    GestPark gestPark;
 
-    Menu menu;
-    menu.handleUserInput();
+    gestPark.insertParkInCity( "Braga", 10 );
+    gestPark.insertParkInCity( "Porto", 20 );
+    gestPark.insertParkInCity( "Lisboa", 100 );
+
+    gestPark.listParksInCity("Braga");
+    gestPark.listParksInCity("Porto");
+    gestPark.listParksInCity("Lisboa");
+    gestPark.listParksInCity("Aveiro");
+
+    gestPark.printAvailableParks();
+
+    // Menu menu;
+    // menu.handleUserInput();
 
     return 0;
 //     // Create a Park object with a capacity of 10

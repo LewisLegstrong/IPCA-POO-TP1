@@ -7,7 +7,8 @@
 #include <sstream>
 
 #include "time.hpp"
-#include "vehicle_reg.hpp"
+#include "vehicle.hpp"
+#include "registry.hpp"
 #include "file_manipulation.hpp"
 
 class Park {
@@ -25,6 +26,12 @@ private:
 	std::vector<IORegistry> parkedVehicles; 
 
 public:
+    /// @brief get the city where the park is located
+    std::string getCity() const;
+
+    /// @brief get the maximum capacity of the park
+    int getMaxCapacity() const;
+
 	/// @brief list the vehicles parked in the park
 	void listVehicles( );
 
@@ -68,6 +75,8 @@ public:
 	/// @brief Calculate a simulated price to receive from a vehicle at a simulated exit time
 	/// @return The price to be paid by the vehicle
 	float getSimulatedPriceToReceive ( Time &simulatedTime );
+
+
 } ;
 
 
@@ -79,14 +88,20 @@ public:
 	~GestPark( );
 
 private:
-	std::vector<Park> avaialbleParks;
+	std::vector<Park> availableParks;
 
 public:
 	/// @brief Insert a new park in the city
-	void insertParkInCity ( );
+	/// @param city 
+	/// @param capacity 
+	void insertParkInCity ( std::string city, int capacity );
 
-	/// @brief List all parks in given city
+	/// @brief  List all parks in a city
+	/// @param city 
 	void listParksInCity ( std::string city );
+
+	/// @brief Print all available parks
+    void printAvailableParks();
 
 	// Register a new vehicle in the park is included in park.hpp
 

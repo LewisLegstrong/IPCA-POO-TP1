@@ -1,6 +1,7 @@
 #include <iostream>
 
-#include "vehicle_reg.hpp"
+#include "vehicle.hpp"
+#include "registry.hpp"
 
 class monthlyParkSubscription {
 public:
