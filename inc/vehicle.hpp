@@ -4,8 +4,6 @@
 #include <string>
 #include <iostream>
 
-
-
 /// @brief Class to define the vehicle
 class Vehicle {
 public:

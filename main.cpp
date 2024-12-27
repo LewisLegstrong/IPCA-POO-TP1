@@ -2,8 +2,6 @@
 #include <sstream>
 #include <string>
 
-//#include "time.hpp"
-#include "date.hpp"
 #include "dateTime.hpp"
 #include "vehicle.hpp"
 #include "registry.hpp"
@@ -29,6 +27,49 @@ int main() {
     // menu.handleUserInput();
 
     return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 //     // Create a Park object with a capacity of 10
 //     Park myPark(10, "Braga");
     
