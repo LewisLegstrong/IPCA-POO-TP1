@@ -116,11 +116,16 @@ void GestPark::insertParkInCity( std::string city, int capacity ) {
 }
 
 void GestPark::listParksInCity(std::string city) {
-    std::cout << "Parks in " << city << ":" << std::endl;
+    std::cout << "Park of " << city << ":" << std::endl;
+    bool parkFound = false;
     for (const auto& park : availableParks) {
         if (park.getCity() == city) {
             std::cout << "Park with capacity: " << park.getMaxCapacity() << std::endl;
+            parkFound = true;
         }
+    }
+    if (!parkFound) {
+        std::cout << "No park in " << city << std::endl;
     }
 }
 
