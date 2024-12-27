@@ -2,19 +2,33 @@
 #define _DATE_HPP_
 
 #include <iostream>
+#include <map>
+
+/// @brief Map with the days of each month, avoids the need to use switch case
+const std::map< int , int > monthDays = {
+	{1, 31},
+	{2, 28},
+	{3, 31},
+	{4, 30},
+	{5, 31},
+	{6, 30},
+	{7, 31},
+	{8, 31},
+	{9, 30},
+	{10, 31},
+	{11, 30},
+	{12, 31}
+};
 
 class Date {
 public: 	
 	/// @brief constructor of the class Date
-	/// @param d is the day of the registry 
-	/// @param m is the month of the registry
-	/// @param y is the year of the registry
 	Date (int d, int m, int y);
 
 protected: 
-	int day;
+	int	day;
 	int month;
-	int year;
+	int	year;
 	
 public:
 	/// @brief 
