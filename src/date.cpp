@@ -3,8 +3,11 @@
 Date::Date(int d, int m, int y) {
 	this->year = y;
 	this->month = m;
-	if ( d > monthDays[m] ) {
+	if ( d > monthDays[ m ] ) {
 		throw std::invalid_argument("Invalid day");
+	}
+	else {
+		this->day = d;
 	}
 }
 

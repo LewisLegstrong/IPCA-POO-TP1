@@ -5,7 +5,7 @@
 #include <map>
 
 /// @brief Map with the days of each month, avoids the need to use switch case
-const std::map< int , int > monthDays = {
+static std::map< int , int > monthDays = {
 	{1, 31},
 	{2, 28},
 	{3, 31},
