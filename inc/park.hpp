@@ -10,6 +10,30 @@
 #include "registry.hpp"
 #include "file_manipulation.hpp"
 
+class Subscription {
+public:
+    Subscription(std::string customerName, int NIF, std::string licensePlate, bool isPaidForCurrentMonth)
+	{
+		this->customerName = customerName;
+		this-> NIF = NIF;
+		this->licensePlate = licensePlate;
+		this->isPaidForCurrentMonth = isPaidForCurrentMonth;
+	}
+       
+
+	std::string getCustomerName() const { return customerName; }
+    int getNIF() const { return NIF; }
+    std::string getLicensePlate() const { return licensePlate; }
+    bool getIsPaidForCurrentMonth() const { return isPaidForCurrentMonth; }
+	void setIsPaidForCurrentMonth(bool isPaid) { isPaidForCurrentMonth = isPaid; }
+
+private:
+    std::string customerName;
+    int NIF;
+    std::string licensePlate;
+    bool isPaidForCurrentMonth;
+};
+
 class Park {
 public: 
     /// @brief Park constructor, meant to initialize a park retaining it's location and capacity
@@ -37,7 +61,7 @@ public:
 	/// @brief register a new vehicle in the park, saves information about time of entry and vehicle
 	/// @param v 
 	/// @param in 
-	void newEntry ( Vehicle &v, Time &in );
+	void newEntry ( Vehicle &v, DateTime &in );
 
 	/// @brief remove a vehicle from the park, saves information about time of exit and vehicle and removes the registry from the parkedVehicles vector
 	/// @param licensePlate
@@ -88,7 +112,7 @@ public:
 
 private:
 	std::vector<Park> availableParks;
-
+	std::vector<Subscription> subscriptions;
 public:
 	/// @brief Insert a new park in the city
 	/// @param city 
@@ -114,5 +138,22 @@ public:
 	/// @return The months paid by the client
 	std::string paymentsReceivedByClient ( int nif );
 
+    /// @brief Register a monthly subscription for a customer
+    /// @param customerName 
+    /// @param NIF
+    /// @param licensePlate 
+    /// @param isPaidForCurrentMonth 
+    void registerMonthlySubscription(std::string customerName, int nif, std::string licensePlate, bool isPaidForCurrentMonth);
+
+	/// @brief Update the payment status of a subscription
+    /// @param licensePlate 
+    /// @param isPaidForCurrentMonth 
+    void updateSubscriptionPaymentStatus(std::string licensePlate, bool isPaidForCurrentMonth);
+
+    /// @brief Check if a car has an active subscription
+    /// @param licensePlate 
+    /// @return True if the car has an active subscription, false otherwise
+    bool hasActiveSubscription(std::string licensePlate);	
 };
+
 #endif 		// _PARK_

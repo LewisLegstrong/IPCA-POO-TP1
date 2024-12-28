@@ -13,7 +13,7 @@ Park::Park(int capacity, std::string parkLocation)
     this->currentVehicles = 0;
 }
 
-// void Park::newEntry(Vehicle &v, Time &in) {
+// void Park::newEntry(Vehicle &v, DateTime &in) {
 //     if (currentVehicles < maxCapacity) {
 //         IORegistry newRegistry(v, in);
 //         parkedVehicles.push_back(newRegistry);
@@ -22,6 +22,7 @@ Park::Park(int capacity, std::string parkLocation)
 //         std::cout << "Park is at full capacity!" << std::endl;
 //     }
 // }
+
 
 // void Park::removeEntry(const std::string &licensePlate, Time &out) {
 //     for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
@@ -136,3 +137,36 @@ void GestPark::printAvailableParks() {
     }
 }
 
+std::string GestPark::paymentsReceivedByClient(int nif) {
+    std::ostringstream oss;
+    for (const auto& subscription : subscriptions) {
+        if (subscription.getNIF() == nif) {
+            oss << "Customer: " << subscription.getCustomerName() << ", License Plate: " << subscription.getLicensePlate()
+                << ", Paid for Current Month: " << (subscription.getIsPaidForCurrentMonth() ? "Yes" : "No") << std::endl;
+        }
+    }
+    return oss.str();
+}
+
+void GestPark::registerMonthlySubscription(std::string customerName, int nif, std::string licensePlate, bool isPaidForCurrentMonth) {
+    Subscription newSubscription(customerName, nif, licensePlate, isPaidForCurrentMonth);
+    subscriptions.push_back(newSubscription);
+}
+
+void GestPark::updateSubscriptionPaymentStatus(std::string licensePlate, bool isPaidForCurrentMonth) {
+    for (auto& subscription : subscriptions) {
+        if (subscription.getLicensePlate() == licensePlate) {
+            subscription.setIsPaidForCurrentMonth(isPaidForCurrentMonth);
+            break;
+        }
+    }
+}
+
+bool GestPark::hasActiveSubscription(std::string licensePlate) {
+    for (const auto& subscription : subscriptions) {
+        if (subscription.getLicensePlate() == licensePlate && subscription.getIsPaidForCurrentMonth()) {
+            return true;
+        }
+    }
+    return false;
+}
