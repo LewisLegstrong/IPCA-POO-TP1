@@ -100,6 +100,13 @@ int IORegistry::getExitTime() {
 }
 
 float IORegistry::simCalculateTicket( DateTime &exitTimeSimulated ) {
+    // Verificar se o parque foi mais de 24h 
+    uint64_t parkDurationTimeStamp = exitTimeSimulated.getTimeStamp() - this->entry.getTimeStamp();
+    if ( parkDurationTimeStamp >= DAY_TO_SECONDS ) {
+        int times24h = parkDurationTimeStamp / DAY_TO_SECONDS;    //Verify how many times 24h were completed
+        this->priceToPay +=( calculate24hValue( this->getEntryTime() ) * times24h );
+    }  
+
     int parkedTime = exitTimeSimulated - this->entry;
     float priceToPaySim = 0.00;
 
