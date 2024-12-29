@@ -5,7 +5,7 @@ DateTime::DateTime(int registerDay, int registerMonth, int registerYear, int reg
 }
 
 void DateTime::convertToTimeStamp() {
-	this-> timeStamp = (year * YEAR_TO_SECONDS) + (monthDays.at(month - 1) * DAY_TO_SECONDS) + (day * DAY_TO_SECONDS) + (hour * MINUTES_IN_HOUR * SECONDS_IN_MINUTE) + (minute * SECONDS_IN_MINUTE) + seconds;
+	this-> timeStamp = (year * YEAR_TO_SECONDS) + (monthDays.at(month - 1) * DAY_TO_SECONDS) + ( ( day - 1 ) * DAY_TO_SECONDS ) + (hour * MINUTES_IN_HOUR * SECONDS_IN_MINUTE) + (minute * SECONDS_IN_MINUTE) + seconds;
 }
 
 uint64_t DateTime::getTimeStamp() {
