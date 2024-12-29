@@ -56,7 +56,7 @@ public:
     int getMaxCapacity() const;
 
 	/// @brief list the vehicles parked in the park
-	void listVehicles( );
+	void listVehicles( ) const;
 
 	/// @brief register a new vehicle in the park, saves information about time of entry and vehicle
 	/// @param v 
@@ -126,8 +126,12 @@ public:
 	/// @brief Print all available parks
     void printAvailableParks();
 
-	// Register a new vehicle in the park is included in park.hpp
+	void listAllVehicles(); 
 
+	/// @brief Register a new vehicle in the park
+	Park* getParkInCity(const std::string& city);
+
+	// Register a new vehicle in the park is included in park.hpp
 	/// @brief  finds where a vehicle is parked
 	/// @return The City where the car is parked
 	std::string findWhereIsParked ( std::string licensePlate );

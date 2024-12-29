@@ -34,6 +34,7 @@ void Menu::handleUserInput() {
     int nif;
     bool isPaid;
     int capacity;
+    int day, month, year, hour, minute, second;
     do {
         displayMenu();
         std::cout << "Enter your choice: ";
@@ -41,7 +42,7 @@ void Menu::handleUserInput() {
 
         switch (static_cast<menuOptions>(choice)) {
 
-            case menuOptions::REGISTER_PARK_TO_CITY:
+            case menuOptions::REGISTER_PARK_TO_CITY:{
                 std::cout << "Register Park to City selected." << std::endl;
                 std::cout << "Choose City You Want To Create Park: ";
                 std::cin >> city;
@@ -49,42 +50,70 @@ void Menu::handleUserInput() {
                 std::cin >> capacity;
                 gestPark.insertParkInCity( city, capacity );
                 break;
+            }
 
-            case menuOptions::LIST_PARKS:
+            case menuOptions::LIST_PARKS:{
                 std::cout << "List Parks selected." << std::endl;
                 std::cout << "Choose City You Want To List Park: ";
                 std::cin >> city;
                 gestPark.listParksInCity (city);
                 break;
+            }
 
-            case menuOptions::REGISTER_ENTRY_VEHICLE:   
+            case menuOptions::REGISTER_ENTRY_VEHICLE:{
                 std::cout << "Register Entry Vehicle selected." << std::endl;
-                std::cout << "Em que cidade" << std::endl;
-                std::cout << "Não tem parque nessa cidade cria um se quiseres burro" << std::endl;
-
 
                 std::cout << "License Plate of Car:" << std::endl;
-                
-                //newEntry(licensePlate, entryTime);
-                break;
+                std::cin >> licensePlate;
+                std::cout << "Day: " << std::endl;
+                std::cin >> day;
+                std::cout << "Month: " << std::endl;
+                std::cin >> month;
+                std::cout << "Year: " << std::endl;
+                std::cin >> year;
+                std::cout << "Hour: " << std::endl;
+                std::cin >> hour;
+                std::cout << "Minute: " << std::endl;
+                std::cin >> minute;
+                std::cout << "Second: " << std::endl;
+                std::cin >> second;
+                std::cout << "Enter city park name: " << std::endl;
+                std::cin >> city;
 
-            case menuOptions::REGISTER_EXIT_VEHICLE:
+                Vehicle newVehicle(licensePlate);
+                DateTime entryTime(day, month, year, hour, minute, second);
+
+                Park* park = gestPark.getParkInCity(city);
+                if (park != nullptr) {
+                    park->newEntry(newVehicle, entryTime);
+                } else {
+                    std::cout << "No park found in " << city << std::endl;
+                }
+                break;
+            }
+
+            case menuOptions::REGISTER_EXIT_VEHICLE:{
                 std::cout << "Register Exit Vehicle selected." << std::endl;
                 break;
+            }
 
-            case menuOptions::LIST_VEHICLES:
+            case menuOptions::LIST_VEHICLES:{
                 std::cout << "List Vehicles selected." << std::endl;
+                gestPark.listAllVehicles();
                 break;
+            }
 
-            case menuOptions::FIND_CITY_VEHICLE_IS_PARKED:
+            case menuOptions::FIND_CITY_VEHICLE_IS_PARKED:{
                 std::cout << "Find City Vehicle is Parked selected." << std::endl;
                 break;
+            }
 
-            case menuOptions::RETURN_VEHICLE_HISTORY:
+            case menuOptions::RETURN_VEHICLE_HISTORY:{
                 std::cout << "Return Vehicle History selected." << std::endl;
                 break;
+            }
 
-            case menuOptions::MANAGE_SUBSCRIPTION:
+            case menuOptions::MANAGE_SUBSCRIPTION:{
                 int menu_subscription;
                 std::cout << "Manage Subscription selected." << std::endl;
                 std::cout << "Enter your choice: " << std::endl;
@@ -119,8 +148,9 @@ void Menu::handleUserInput() {
                     break;
                 }
                 break;
+            }
 
-            case menuOptions::FIND_ATIVE_SUBSCRIPTION:
+            case menuOptions::FIND_ATIVE_SUBSCRIPTION:{
                 std::cout << "Find Ative Subscription selected." << std::endl;
                 std::cout << "Insert License Plate:"<< std::endl;
                 std::cin >>  licensePlate;
@@ -131,14 +161,17 @@ void Menu::handleUserInput() {
                     std::cout << "The car with license plate " << licensePlate << " does not have an active subscription." << std::endl;
                     }
                 break;
+            }
 
-            case static_cast<menuOptions>(0):
+            case static_cast<menuOptions>(0):{
                 std::cout << "Exiting..." << std::endl;
                 break;
+            }
 
-            default:
+            default:{
                 std::cout << "Invalid choice. Please try again." << std::endl;
                 break;
+            }
         }
     } while (choice != 0);
 }

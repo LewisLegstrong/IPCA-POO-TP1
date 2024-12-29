@@ -1,8 +1,15 @@
 #include "park.hpp"
 
-void Park::listVehicles() {
+void Park::listVehicles() const {
     for (const IORegistry &unit : this->parkedVehicles) {
         std::cout << unit.getDetails() << std::endl;
+    }
+}
+
+void GestPark::listAllVehicles() {
+    for (const Park& park : availableParks) {
+        std::cout << "Vehicles in park at " << park.getCity() << ":" << std::endl;
+        park.listVehicles();
     }
 }
 
@@ -13,17 +20,15 @@ Park::Park(int capacity, std::string parkLocation)
     this->currentVehicles = 0;
 }
 
-// void Park::newEntry(Vehicle &v, DateTime &in) {
-//     if (currentVehicles < maxCapacity) {
-//         IORegistry newRegistry(v, in);
-//         parkedVehicles.push_back(newRegistry);
-//         currentVehicles++;
-//     } else {
-//         std::cout << "Park is at full capacity!" << std::endl;
-//     }
-// }
-
-
+void Park::newEntry(Vehicle &v, DateTime &in) {
+    if (currentVehicles < maxCapacity) {
+        IORegistry newRegistry(v, in);
+        parkedVehicles.push_back(newRegistry);
+        currentVehicles++;
+    } else {
+        std::cout << "Park is at full capacity!" << std::endl;
+    }
+}
 // void Park::removeEntry(const std::string &licensePlate, Time &out) {
 //     for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
 //         if (i->getVehicle()->getLicensePlate() == licensePlate) {
@@ -135,6 +140,15 @@ void GestPark::printAvailableParks() {
     for (const auto& park : availableParks) {
         std::cout << "City: " << park.getCity() << ", Capacity: " << park.getMaxCapacity() << std::endl;
     }
+}
+
+Park* GestPark::getParkInCity(const std::string& city) {
+    for (Park& park : availableParks) {
+        if (park.getCity() == city) {
+            return &park;
+        }
+    }
+    return nullptr;
 }
 
 std::string GestPark::paymentsReceivedByClient(int nif) {
