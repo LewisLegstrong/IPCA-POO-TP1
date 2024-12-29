@@ -29,9 +29,9 @@ public:
 	IORegistry (Vehicle &v, DateTime &in);
 
 private:
-	Vehicle 	information;
+	Vehicle	information;
 	DateTime	entry;
-	DateTime  	exit;
+	DateTime 	exit;
 	float 	priceToPay;
 
 public:
@@ -73,7 +73,7 @@ public:
 	float calculate24hValue( int exitTime );
 
 	/// @brief 			Returns the details of the vehicle as well as entry time registered in the object IORegistry
-	std::string getDetails() const;
+	std::string getDetails();
 
 	/// @brief 			Returns the period of the day the car is parked
 	/// @return 		State used to assist in the calculation of the ticket price 

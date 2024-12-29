@@ -10,39 +10,39 @@
 #include "park.hpp"
 
 int main() {
-    // GestPark gestPark;
+    GestPark gestPark;
 
-    // gestPark.insertParkInCity( "Braga", 10 );
-    // gestPark.insertParkInCity( "Porto", 20 );
-    // gestPark.insertParkInCity( "Lisboa", 100 );
+    gestPark.insertParkInCity( "Braga", 10 );
+    gestPark.insertParkInCity( "Porto", 20 );
+    gestPark.insertParkInCity( "Lisboa", 100 );
 
-    // gestPark.listParksInCity("Braga");
-    // gestPark.listParksInCity("Porto");
-    // gestPark.listParksInCity("Lisboa");
-    // gestPark.listParksInCity("Aveiro");
+    gestPark.listParksInCity("Braga");
+    gestPark.listParksInCity("Porto");
+    gestPark.listParksInCity("Lisboa");
+    gestPark.listParksInCity("Aveiro");
 
-    // gestPark.printAvailableParks();
+    gestPark.printAvailableParks();
 
 
 
-    // // Create a Vehicle instance
-    // Vehicle myVehicle("97-97-DJ");
+    // Create a Vehicle instance
+    Vehicle myVehicle("97-97-DJ");
 
-    // // Create a DateTime instance for the entry time
-    // DateTime entryTime(1, 1, 2023, 10, 30, 0);
+    // Create a DateTime instance for the entry time
+    DateTime entryTime(1, 1, 2023, 10, 30, 0);
 
-    // // Retrieve the park in the specified city
-    // Park* parkInBraga = gestPark.getParkInCity("Braga");
-    // if (parkInBraga != nullptr) {
-    //     parkInBraga->newEntry(myVehicle, entryTime);
-    // } else {
-    //     std::cout << "No park found in " << std::endl;
-    // }
+    // Retrieve the park in the specified city
+    Park* parkInBraga = gestPark.getParkInCity("Braga");
+    if (parkInBraga != nullptr) {
+        parkInBraga->newEntry(myVehicle, entryTime);
+    } else {
+        std::cout << "No park found in " << std::endl;
+    }
 
-    // gestPark.listAllVehicles();
+    gestPark.listAllVehicles();
 
-    Menu menu;
-    menu.handleUserInput();
+    // Menu menu;
+    // menu.handleUserInput();
 
     return 0;
 

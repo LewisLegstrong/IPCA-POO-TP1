@@ -1,8 +1,7 @@
 #include "registry.hpp"
 
-IORegistry::IORegistry(Vehicle &v, DateTime &in) {
-	this->information = &v;
-	this->entry = &in;
+IORegistry::IORegistry(Vehicle &v, DateTime &in) : information(v), entry(in), exit(0, 0, 0, 0, 0, 0) {
+    this->priceToPay = 0.0;
 }
 
 void IORegistry::setExitTime(DateTime &out) {
@@ -11,9 +10,18 @@ void IORegistry::setExitTime(DateTime &out) {
     this->writeToFile();
 }
 
+std::string IORegistry::getDetails() { // Function to get the details of the vehicle
+    std::ostringstream oss; // String stream to concatenate the information
+    oss << "License Plate: " << this->information.getLicensePlate()
+        << ", Entry Date: " << this->entry.getDay() << "/" << this->entry.getMonth() << "/" << this-> entry.getYear()
+        << ", Entry Time: " << this->entry.getHour() << ":" << this->entry.getMinute() << ":" << this->entry.getSeconds();
+    return oss.str();
+}
+
+
 void IORegistry::calculateTicket( ) {
     // Verificar se o parque foi mais de 24h 
-    uint64_t parkDurationTimeStamp = this->exit.getTimeStamp() - this->entry.getTimeStamp();
+    uint64_t parkDurationTimeStamp = this-> exit.getTimeStamp() - this->entry.getTimeStamp();
     if ( parkDurationTimeStamp >= DAY_TO_SECONDS ) {
         int times24h = parkDurationTimeStamp / DAY_TO_SECONDS;    //Verify how many times 24h were completed
         this->priceToPay +=( calculate24hValue( this->getEntryTime() ) * times24h );
@@ -171,13 +179,6 @@ float IORegistry::calculate24hValue( int exitTime ) {
 
 float IORegistry::getPricePaid() {
     return this->priceToPay;
-}
-
-std::string IORegistry::getDetails() const { //Function to get the details of the vehicle
-    std::ostringstream oss; //String stream to concatenate the information
-    oss << "License Plate: " << information.getLicensePlate()
-        << ", Entry Time: " << entry.getHour() << ":" << entry.getMinute();
-    return oss.str();
 }
 
 parkPeriod IORegistry::getParkPeriod() {

@@ -56,7 +56,7 @@ public:
     int getMaxCapacity() const;
 
 	/// @brief list the vehicles parked in the park
-	void listVehicles( ) const;
+	void listVehicles( );
 
 	/// @brief register a new vehicle in the park, saves information about time of entry and vehicle
 	/// @param v 

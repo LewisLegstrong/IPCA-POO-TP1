@@ -1,13 +1,13 @@
 #include "park.hpp"
 
-void Park::listVehicles() const {
-    for (const IORegistry &unit : this->parkedVehicles) {
+void Park::listVehicles() {
+    for (IORegistry &unit : this->parkedVehicles) {
         std::cout << unit.getDetails() << std::endl;
     }
 }
 
 void GestPark::listAllVehicles() {
-    for (const Park& park : availableParks) {
+    for (Park& park : availableParks) {
         std::cout << "Vehicles in park at " << park.getCity() << ":" << std::endl;
         park.listVehicles();
     }
@@ -68,7 +68,7 @@ void Park::sumAccValue( float pricePaid ) {
 
 bool Park::isParked(std::string &licensePlate) {
     for ( auto unit : parkedVehicles ) {
-        if (unit.getVehicle()->getLicensePlate() == licensePlate)
+        if (unit.getVehicle().getLicensePlate() == licensePlate)
             return true;
     }
     return false;
