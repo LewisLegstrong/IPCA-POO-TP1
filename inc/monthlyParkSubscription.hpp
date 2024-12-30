@@ -1,27 +1,27 @@
+#ifndef _MONTHLY_PARK_SUBSCRIPTION_
+#define _MONTHLY_PARK_SUBSCRIPTION_
+
 #include <iostream>
 
 #include "vehicle.hpp"
 #include "registry.hpp"
 
-class monthlyParkSubscription {
+class Subscription {
 public:
-	monthlyParkSubscription(int nifRegister, Vehicle *vehicleRegister, std::string name);
+    Subscription( std::string customerName, std::string lp, int NIF, bool isPaidForCurrentMonth );
 
 private:
-	int 		nif;
-	bool 		isActive;
-	Vehicle 	*registeredVehicle;
-	std::string customerName;
+	int 		NIF;
+	bool		isPaidForCurrentMonth;
+    std::string customerName;
+	std::string licensePlate;
 
 public:
-	/// @brief Activates the monthly subscription
-	void activateSubscription();
-
-	/// @brief Deactivates the monthly subscription
-	void revokeSubscription();
-
-	/// @brief Returns if the monthly subscription is active
-	/// @return true if the subscription is active, false otherwise
-	bool getIsActive();
-
+	void setIsPaidForCurrentMonth( bool isPaid );
+    bool getIsPaidForCurrentMonth( ) const ;
+	int getNIF( ) const ;
+	std::string getCustomerName( ) const ;
+    std::string getLicensePlate( ) const ;
 };
+
+#endif // _MONTHLY_PARK_SUBSCRIPTION_
