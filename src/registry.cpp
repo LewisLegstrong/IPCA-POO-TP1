@@ -6,6 +6,7 @@ IORegistry::IORegistry(Vehicle &v, DateTime &in) : information(v), entry(in), ex
 
 void IORegistry::setExitTime(DateTime &out) {
 	this->exit = out;
+    //if ( ) // TBD
     this->calculateTicket();
     this->writeToFile();
 }
@@ -154,33 +155,35 @@ float IORegistry::simCalculateTicket( DateTime &exitTimeSimulated ) {
 
 
 float IORegistry::calculate24hValue( int exitTime ) {
+    float priceFor24h = 0.0;
     if ( exitTime < 420 ) {
-        return ( 23.90 );
+        priceFor24h = 23.90;
     }
     else if ( exitTime < 435 ) {
-        return ( 23.80 );
+        priceFor24h = 23.80;
     }
     else if ( exitTime < 450 ) {
-        return ( 23.70 );
+        priceFor24h = 23.70;
     }
     else if ( exitTime < 480 ) {
-        return ( 23.60 );
+        priceFor24h = 23.60;
     }
     else if ( exitTime < 1140) {
-        return ( 23.60 );
+        priceFor24h = 23.60;
     }
     else if ( exitTime < 1155 ) {
-        return ( 23.70 );
+        priceFor24h = 23.70;
     }
     else if ( exitTime < 1170 ) {
-        return ( 23.80 );
+        priceFor24h = 23.80;
     }
     else if ( exitTime < 1185 ) {
-        return ( 23.90 );
+        priceFor24h = 23.90;
     }
     else if ( exitTime < 1200 ) {
-        return ( 24.00 );
+        priceFor24h = 24.00;
     }
+    return priceFor24h;
 } 
 
 

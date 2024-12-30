@@ -29,10 +29,11 @@ public:
 	IORegistry (Vehicle &v, DateTime &in);
 
 private:
-	Vehicle	information;
+	float 		priceToPay;
+	Vehicle		information;
 	DateTime	entry;
 	DateTime 	exit;
-	float 	priceToPay;
+	
 
 public:
 	/// @brief 			Set the exit time of the vehicle. Calls for the calculation of the ticket price and writes to the history file 
