@@ -1,7 +1,5 @@
 #include "menu.hpp"
 
-GestPark gestPark;
-
 Menu::Menu() {
     // Constructor implementation
 }
@@ -28,13 +26,14 @@ void Menu::displayMenu() {
 
 void Menu::handleUserInput() {
     int choice;
+    int capacity;
+    int day, month, year, hour, minute, second;
+    int nif;
     std::string city;
     std::string licensePlate;
     std::string name;
-    int nif;
     bool isPaid;
-    int capacity;
-    int day, month, year, hour, minute, second;
+
     do {
         displayMenu();
         std::cout << "Enter your choice: ";
@@ -80,13 +79,13 @@ void Menu::handleUserInput() {
                 std::cout << "Enter city park name: " << std::endl;
                 std::cin >> city;
 
-                Vehicle newVehicle(licensePlate);
-                DateTime entryTime(day, month, year, hour, minute, second);
-
-                Park* park = gestPark.getParkInCity(city);
-                if (park != nullptr) {
-                    park->newEntry(newVehicle, entryTime);
-                } else {
+                Vehicle newVehicle( licensePlate );
+                DateTime entryTime( day, month, year, hour, minute, second );
+ 
+                if (gestPark.getParkInCity(city)) {
+                    gestPark.findAndAddVehicle( city, newVehicle, entryTime );
+                } 
+                else {
                     std::cout << "No park found in " << city << std::endl;
                 }
                 break;
@@ -94,6 +93,25 @@ void Menu::handleUserInput() {
 
             case menuOptions::REGISTER_EXIT_VEHICLE: {
                 std::cout << "Register Exit Vehicle selected." << std::endl;
+                std::cout << "License Plate of Car:" << std::endl;
+                std::cin >> licensePlate;
+                std::cout << "Day: " << std::endl;
+                std::cin >> day;
+                std::cout << "Month: " << std::endl;
+                std::cin >> month;
+                std::cout << "Year: " << std::endl;
+                std::cin >> year;
+                std::cout << "Hour: " << std::endl;
+                std::cin >> hour;
+                std::cout << "Minute: " << std::endl;
+                std::cin >> minute;
+                std::cout << "Second: " << std::endl;
+                std::cin >> second;
+
+                DateTime exitTime(day, month, year, hour, minute, second);
+                exitTime.outputTime();
+                gestPark.findAndRemoveVehicle( licensePlate, exitTime );
+
                 break;
             }
 
@@ -130,7 +148,7 @@ void Menu::handleUserInput() {
                     std::cin >> licensePlate;
                     std::cout << " Is Paid (1 -> true/ 2 -> false): " << std::endl;
                     std::cin >> isPaid;
-                    gestPark.registerMonthlySubscription(name, nif, licensePlate, isPaid);
+                    gestPark.registerMonthlySubscription( name, licensePlate, nif, isPaid );
                 }
                 else if (menu_subscription == 2){
                     std::cout << " Write NIF : " << std::endl;

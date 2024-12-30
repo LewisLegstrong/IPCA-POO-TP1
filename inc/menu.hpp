@@ -22,6 +22,9 @@ enum class menuOptions{
 };
 
 class Menu {
+private:
+    GestPark gestPark;
+
 public:
     /// @brief Constructor of main menu
     Menu();
