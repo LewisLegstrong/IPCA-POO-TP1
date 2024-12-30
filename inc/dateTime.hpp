@@ -20,7 +20,8 @@ class DateTime : public Date, public Time {
 public: 
 	/// @brief Constructor for a class derived from Date and Time. meant to simplify the verification process
 	DateTime(int registerDay, int registerMonth, int registerYear, 
-				int registerHour, int registerMinute, int registerSeconds);
+				int registerHour, int registerMinute, int registerSeconds)  ;
+	
 
 private:
 	std::uint64_t timeStamp;
@@ -36,6 +37,10 @@ public:
 	/// Assists the operator- in calculating the time passed between two DateTime objects
 	/// @return the timeStamp of the DateTime object in seconds
 	uint64_t getTimeStamp();
+
+	void outputTime();
 };
+
+
 
 #endif 		// _DATE_TIME_
