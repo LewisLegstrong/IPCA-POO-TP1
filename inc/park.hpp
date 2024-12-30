@@ -9,30 +9,9 @@
 #include "vehicle.hpp"
 #include "registry.hpp"
 #include "file_manipulation.hpp"
+#include "monthlyParkSubscription.hpp"
 
-class Subscription {
-public:
-    Subscription(std::string customerName, int NIF, std::string licensePlate, bool isPaidForCurrentMonth)
-	{
-		this->customerName = customerName;
-		this-> NIF = NIF;
-		this->licensePlate = licensePlate;
-		this->isPaidForCurrentMonth = isPaidForCurrentMonth;
-	}
-       
 
-	std::string getCustomerName() const { return customerName; }
-    int getNIF() const { return NIF; }
-    std::string getLicensePlate() const { return licensePlate; }
-    bool getIsPaidForCurrentMonth() const { return isPaidForCurrentMonth; }
-	void setIsPaidForCurrentMonth(bool isPaid) { isPaidForCurrentMonth = isPaid; }
-
-private:
-    std::string customerName;
-    int NIF;
-    std::string licensePlate;
-    bool isPaidForCurrentMonth;
-};
 
 class Park {
 public: 
@@ -44,7 +23,7 @@ public:
 private: 
 	int maxCapacity;
 	int currentVehicles;
-	float accumulatedValue = 0.0 ;
+	float accumulatedValue = 0.0;
 	std::string city;
 	std::vector<IORegistry> parkedVehicles; 
 
@@ -66,7 +45,7 @@ public:
 	/// @brief remove a vehicle from the park, saves information about time of exit and vehicle and removes the registry from the parkedVehicles vector
 	/// @param licensePlate
 	/// @param out
-	void removeEntry ( const std::string &licensePlate, Time &out );
+	void removeEntry ( const std::string &licensePlate, DateTime &out, bool subscriptionIsPaid );
 	
 	/// @brief sum the value paid by the vehicle to the accumulated value of the park
 	/// @param pricePaid
@@ -87,7 +66,7 @@ public:
 	/// @param licensePlate 
 	/// @param current 
 	/// @return time in minutes
-	int getTimeSpentInPark ( const std::string &licensePlate, Time &current ) const;
+	int getTimeSpentInPark ( const std::string &licensePlate, DateTime &current ) const;
 
 	/// @brief Verifies if a vehicle is parked in the park
 	bool isParked ( std::string &licensePlate );
@@ -97,7 +76,7 @@ public:
 	
 	/// @brief Calculate a simulated price to receive from a vehicle at a simulated exit time
 	/// @return The price to be paid by the vehicle
-	float getSimulatedPriceToReceive ( Time &simulatedTime );
+	float getSimulatedPriceToReceive ( DateTime &simulatedTime );
 
 
 } ;
@@ -113,6 +92,7 @@ public:
 private:
 	std::vector<Park> availableParks;
 	std::vector<Subscription> subscriptions;
+	
 public:
 	/// @brief Insert a new park in the city
 	/// @param city 
@@ -129,7 +109,7 @@ public:
 	void listAllVehicles(); 
 
 	/// @brief Register a new vehicle in the park
-	Park* getParkInCity(const std::string& city);
+	bool getParkInCity(const std::string& city);
 
 	// Register a new vehicle in the park is included in park.hpp
 	/// @brief  finds where a vehicle is parked
@@ -142,12 +122,12 @@ public:
 	/// @return The months paid by the client
 	std::string paymentsReceivedByClient ( int nif );
 
-    /// @brief Register a monthly subscription for a customer
+    /// @brief Register a monthly subscription for a customer, and customer's car
     /// @param customerName 
     /// @param NIF
     /// @param licensePlate 
     /// @param isPaidForCurrentMonth 
-    void registerMonthlySubscription(std::string customerName, int nif, std::string licensePlate, bool isPaidForCurrentMonth);
+    void registerMonthlySubscription( std::string customerName, std::string lp, int nif, bool isPaidForCurrentMonth);
 
 	/// @brief Update the payment status of a subscription
     /// @param licensePlate 
@@ -158,6 +138,10 @@ public:
     /// @param licensePlate 
     /// @return True if the car has an active subscription, false otherwise
     bool hasActiveSubscription(std::string licensePlate);	
+
+	void findAndRemoveVehicle ( std::string& licensePlate, DateTime &exitTime );
+
+	void findAndAddVehicle ( std::string city, Vehicle &v, DateTime &in );
 };
 
 #endif 		// _PARK_
