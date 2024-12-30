@@ -34,10 +34,9 @@ private:
 	DateTime	entry;
 	DateTime 	exit;
 	
-
 public:
 	/// @brief 			Set the exit time of the vehicle. Calls for the calculation of the ticket price and writes to the history file 
-	void setExitTime(DateTime &out);
+	void setExitTime( DateTime &out , bool subscriptionIsPaid );
 
 	/// @brief 			Calculates the ticket price 
 	/// @details 		Calculates the ticket price based on the parked time and the period of the day
@@ -87,7 +86,7 @@ public:
 
 	/// @brief 			Returns the vehicle registered in the object IORegistry
 	/// @return 		Vehicle registered in the object IORegistry
-	Vehicle getVehicle() const; 
+ 	Vehicle& getVehicle();
 
 };
 

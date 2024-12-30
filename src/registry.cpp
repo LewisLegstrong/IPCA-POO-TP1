@@ -1,14 +1,22 @@
 #include "registry.hpp"
 
-IORegistry::IORegistry(Vehicle &v, DateTime &in) : information(v), entry(in), exit(0, 0, 0, 0, 0, 0) {
+IORegistry::IORegistry(Vehicle &v, DateTime &in) : information(v), entry(in), exit( 1, 1, 1, 1, 1, 1 ) {
     this->priceToPay = 0.0;
 }
 
-void IORegistry::setExitTime(DateTime &out) {
+void IORegistry::setExitTime( DateTime &out, bool subscriptionIsPaid ) {
+    out.outputTime();
 	this->exit = out;
-    //if ( ) // TBD
-    this->calculateTicket();
+    std::cout << "Dentro do setExitTime " << std::endl;
+    if (!subscriptionIsPaid) {
+        std::cout << "Dentro do if do setExitTime " << std::endl;
+        out.outputTime();
+        this->calculateTicket();
+    }
+    std::cout << "fora do if do setExitTime " << std::endl;
+    out.outputTime();
     this->writeToFile();
+    out.outputTime();
 }
 
 std::string IORegistry::getDetails() { // Function to get the details of the vehicle
@@ -22,12 +30,14 @@ std::string IORegistry::getDetails() { // Function to get the details of the veh
 
 void IORegistry::calculateTicket( ) {
     // Verificar se o parque foi mais de 24h 
+    this->exit.outputTime();
     uint64_t parkDurationTimeStamp = this-> exit.getTimeStamp() - this->entry.getTimeStamp();
     if ( parkDurationTimeStamp >= DAY_TO_SECONDS ) {
         int times24h = parkDurationTimeStamp / DAY_TO_SECONDS;    //Verify how many times 24h were completed
         this->priceToPay +=( calculate24hValue( this->getEntryTime() ) * times24h );
     }  
 
+  
     switch ( this->getParkPeriod( ) ) {
         case ( parkPeriod::EVENING ):
             this->priceToPay = ( this->getParkedTime() / 15 ) * 0.2;
@@ -215,7 +225,7 @@ parkPeriod IORegistry::simGetParkPeriod( int exitTimeSimulated ) {
     }
 }
 
-Vehicle IORegistry::getVehicle() const {
+Vehicle& IORegistry::getVehicle() {
     return information;
 }
 
