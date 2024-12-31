@@ -31,13 +31,8 @@ void Park::consultHistoric(std::string licensePlate) {
 }
 
 void Park::removeEntry(const std::string &licensePlate, DateTime &out, bool subscriptionIsPaid) {
-    std::cout << "Dentro do remove entry " << std::endl;
     for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
-        std::cout << "Dentro do for remove entry " << std::endl;
-        out.outputTime();
         if (i->getVehicle().getLicensePlate() == licensePlate) {
-            std::cout << "Dentro do if do remove entry antes do exit time " << std::endl;
-            out.outputTime();
             i->setExitTime(out, subscriptionIsPaid); // Set the exit time
             std::cout << "Vehicle with license plate " << licensePlate << " has been removed at " 
                       << out.getHour() << ":" << out.getMinute() << ":" << out.getSeconds() << std::endl;
@@ -99,10 +94,6 @@ std::string Park::getCity() const {
     return city;
 }
 
-
-
-
-
 GestPark::GestPark() {
     // Constructor implementation
 }
@@ -125,9 +116,10 @@ void GestPark::insertParkInCity( std::string city, int capacity ) {
 void GestPark::listParksInCity(std::string city) {
     std::cout << "Park of " << city << ":" << std::endl;
     bool parkFound = false;
-    for (const auto& park : availableParks) {
+    for (auto& park : availableParks) {
         if (park.getCity() == city) {
-            std::cout << "Park with capacity: " << park.getMaxCapacity() << std::endl;
+            std::cout << "Park with max capacity: " << park.getMaxCapacity() 
+                      << ", current live capacity: " << park.getEmptySpots() << std::endl;
             parkFound = true;
         }
     }
@@ -143,39 +135,40 @@ void GestPark::printAvailableParks() {
     }
 }
 
-void GestPark::registerMonthlySubscription( std::string customerName, std::string lp, int nif, bool isPaidForCurrentMonth) {
-    Subscription newSubscription( customerName, lp, nif, isPaidForCurrentMonth );
+void GestPark::registerMonthlySubscription( std::string customerName, std::string lp, int nif, int month, bool isPaidForCurrentMonth) {
+    Subscription newSubscription( customerName, lp, nif, month, isPaidForCurrentMonth );
     subscriptions.push_back(newSubscription);
 }
 
-void GestPark::updateSubscriptionPaymentStatus(std::string licensePlate, bool isPaidForCurrentMonth) {
+void GestPark::updateSubscriptionPaymentStatus(std::string licensePlate, int month, bool isPaidForCurrentMonth) {
     for (auto& subscription : subscriptions) {
-        if (subscription.getLicensePlate() == licensePlate) {
+        if (subscription.getLicensePlate() == licensePlate && subscription.getMonth() == month) {
             subscription.setIsPaidForCurrentMonth(isPaidForCurrentMonth);
             break;
         }
     }
 }
 
-std::string GestPark::paymentsReceivedByClient(int nif) {
+std::string GestPark::paymentsReceivedByClient(int nif, int month) {
     std::ostringstream oss;
-    for (const auto& subscription : subscriptions) {
-        if (subscription.getNIF() == nif) {
+    for (auto& subscription : subscriptions) {
+        if (subscription.getNIF() == nif && subscription.getMonth() == month) {
             oss << "Customer: " << subscription.getCustomerName() << ", License Plate: " << subscription.getLicensePlate()
-                << ", Paid for Current Month: " << (subscription.getIsPaidForCurrentMonth() ? "Yes" : "No") << std::endl;
+                << ", Paid for Month " << month << ": " << (subscription.getIsPaidForCurrentMonth() ? "Yes" : "No") << std::endl;
         }
     }
     return oss.str();
 }
 
-bool GestPark::hasActiveSubscription(std::string licensePlate) {
-    for (const auto& subscription : subscriptions) {
-        if (subscription.getLicensePlate() == licensePlate && subscription.getIsPaidForCurrentMonth()) {
+bool GestPark::hasActiveSubscription(std::string licensePlate, int month) {
+    for (auto& subscription : subscriptions) {
+        if (subscription.getLicensePlate() == licensePlate && subscription.getMonth() == month && subscription.getIsPaidForCurrentMonth()) {
             return true;
         }
     }
     return false;
 }
+
 
 bool GestPark::getParkInCity(const std::string& city) {
     for (Park& park : availableParks) {
@@ -186,18 +179,21 @@ bool GestPark::getParkInCity(const std::string& city) {
     return false;
 }
 
-void GestPark::findAndRemoveVehicle( std::string& licensePlate, DateTime &exitTime ) {
-    exitTime.outputTime();
-    for ( auto park = availableParks.begin(); park != availableParks.end(); park++) {
-        std::cout << "Dentro do for " << std::endl;
-        exitTime.outputTime();
+std::string GestPark::findCityVehicleIsParked( std::string& licensePlate) {
+    for (auto& park : availableParks) {
+        if (park.isParked(licensePlate)) {
+            return park.getCity();
+        }
+    }
+    return "Vehicle not found in any park.";
+}
+
+void GestPark::findAndRemoveVehicle(std::string& licensePlate, DateTime& exitTime) {
+    for (auto park = availableParks.begin(); park != availableParks.end(); park++) {
         if (park->isParked(licensePlate)) {
-            std::cout << "Dentro do if " << std::endl;
-            exitTime.outputTime();
-            hasActiveSubscription(licensePlate) ? park->removeEntry(licensePlate, exitTime, true) :
-                                                  park->removeEntry(licensePlate, exitTime, false );
-            std::cout << "Fim if " << std::endl;
-            exitTime.outputTime();
+            int currentMonth = exitTime.getMonth(); // Get the current month
+            hasActiveSubscription(licensePlate, currentMonth) ? park->removeEntry(licensePlate, exitTime, true) :
+                                                                park->removeEntry(licensePlate, exitTime, false);
             break;
         }
     }
