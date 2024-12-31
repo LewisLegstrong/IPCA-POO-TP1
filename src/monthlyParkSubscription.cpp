@@ -1,9 +1,10 @@
 #include "monthlyParkSubscription.hpp"
 
-Subscription::Subscription( std::string customerName, std::string lp, int NIF, bool isPaidForCurrentMonth = false ) {
+Subscription::Subscription( std::string customerName, std::string lp, int NIF, int month, bool isPaidForCurrentMonth = false ) {
     this->licensePlate = lp;
     this->customerName = customerName;
     this->NIF = NIF;
+    this->month = month;
     this->isPaidForCurrentMonth = isPaidForCurrentMonth;
 }
     
@@ -17,6 +18,10 @@ bool Subscription::getIsPaidForCurrentMonth( ) const {
 
 int Subscription::getNIF( ) const {
     return this->NIF;
+}
+
+int Subscription::getMonth() {
+    return month; 
 }
 
 std::string Subscription::getCustomerName( ) const {
