@@ -13,6 +13,7 @@
 
 
 
+
 class Park {
 public: 
     /// @brief Park constructor, meant to initialize a park retaining it's location and capacity
@@ -111,33 +112,32 @@ public:
 	/// @brief Register a new vehicle in the park
 	bool getParkInCity(const std::string& city);
 
-	// Register a new vehicle in the park is included in park.hpp
-	/// @brief  finds where a vehicle is parked
-	/// @return The City where the car is parked
-	std::string findWhereIsParked ( std::string licensePlate );
+	/// @brief Find the city where a vehicle is parked
+	/// @param licensePlate
+ 	std::string findCityVehicleIsParked(std::string& licensePlate);
 
 	// Return the history of a vehicle in a park is included in park.hpp
 	
 	/// @brief Obtain payments received by a client
 	/// @return The months paid by the client
-	std::string paymentsReceivedByClient ( int nif );
+	std::string paymentsReceivedByClient ( int nif, int month);
 
     /// @brief Register a monthly subscription for a customer, and customer's car
     /// @param customerName 
     /// @param NIF
     /// @param licensePlate 
     /// @param isPaidForCurrentMonth 
-    void registerMonthlySubscription( std::string customerName, std::string lp, int nif, bool isPaidForCurrentMonth);
+    void registerMonthlySubscription( std::string customerName, std::string lp, int nif, int month, bool isPaidForCurrentMonth);
 
 	/// @brief Update the payment status of a subscription
     /// @param licensePlate 
     /// @param isPaidForCurrentMonth 
-    void updateSubscriptionPaymentStatus(std::string licensePlate, bool isPaidForCurrentMonth);
+    void updateSubscriptionPaymentStatus(std::string licensePlate, int month, bool isPaidForCurrentMonth);
 
     /// @brief Check if a car has an active subscription
     /// @param licensePlate 
     /// @return True if the car has an active subscription, false otherwise
-    bool hasActiveSubscription(std::string licensePlate);	
+    bool hasActiveSubscription(std::string licensePlate, int month);	
 
 	void findAndRemoveVehicle ( std::string& licensePlate, DateTime &exitTime );
 

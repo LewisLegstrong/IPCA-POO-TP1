@@ -20,7 +20,7 @@ void Menu::displayMenu() {
     std::cout << "6. Find City Vehicle is Parked" << std::endl;
     std::cout << "7. Return Vehicle History" << std::endl;
     std::cout << "8. Manage Subscription " << std::endl;
-    std::cout << "9. Find NIF Monthly Payments" << std::endl;
+    std::cout << "9. Find Active Subscription" << std::endl;
     std::cout << "0. Exit" << std::endl;
 }
 
@@ -32,7 +32,7 @@ void Menu::handleUserInput() {
     std::string city;
     std::string licensePlate;
     std::string name;
-    bool isPaid;
+    bool isPaid ;
 
     do {
         displayMenu();
@@ -109,7 +109,6 @@ void Menu::handleUserInput() {
                 std::cin >> second;
 
                 DateTime exitTime(day, month, year, hour, minute, second);
-                exitTime.outputTime();
                 gestPark.findAndRemoveVehicle( licensePlate, exitTime );
 
                 break;
@@ -123,6 +122,14 @@ void Menu::handleUserInput() {
 
             case menuOptions::FIND_CITY_VEHICLE_IS_PARKED: {
                 std::cout << "Find City Vehicle is Parked selected." << std::endl;
+                std::cout << "Enter License Plate: ";
+                std::cin >> licensePlate;
+                std::string city = gestPark.findCityVehicleIsParked(licensePlate);
+                if (city == "Vehicle not found in any park.") {
+                    std::cout << city << std::endl;
+                } else {
+                    std::cout << "The vehicle with license plate " << licensePlate << " is parked in " << city << "." << std::endl;
+                }
                 break;
             }
 
@@ -140,27 +147,33 @@ void Menu::handleUserInput() {
                 std::cout << "3 - Update Payment Subscription " << std::endl;
                 std::cin >> menu_subscription;
                 if (menu_subscription == 1){
-                    std::cout << " Write Name : " << std::endl;
-                    getline(std::cin, name);
-                    std::cout << " Write NIF : " << std::endl ;
+                    std::cout << "Write Name: " << std::endl;
+                    std::cin.ignore();
+                    std::getline(std::cin, name);
+                    std::cout << "Write NIF: " << std::endl;
                     std::cin >> nif;
-                    std::cout << " License Plate : " << std::endl ;
+                    std::cout << "License Plate: " << std::endl;
                     std::cin >> licensePlate;
-                    std::cout << " Is Paid (1 -> true/ 2 -> false): " << std::endl;
+                    std::cout << "Write Month for subscription: " << std::endl;
+                    std::cin >> month;
+                    std::cout << "Is Paid (1 -> true / 0 -> false): " << std::endl;
                     std::cin >> isPaid;
-                    gestPark.registerMonthlySubscription( name, licensePlate, nif, isPaid );
+                    gestPark.registerMonthlySubscription(name, licensePlate, nif, month, isPaid);
                 }
                 else if (menu_subscription == 2){
                     std::cout << " Write NIF : " << std::endl;
                     std::cin >> nif;
-                    std::cout << gestPark.paymentsReceivedByClient(nif);
+                    std::cout << " Write Month for subscription : " << std::endl;
+                    std::cout << gestPark.paymentsReceivedByClient(nif, month);
                 }
                 else if (menu_subscription == 3){
                     std::cout << " License Plate : " << std::endl;
                     std::cin >> licensePlate;
+                    std::cout << " Write Month update for subscription : " << std::endl;
+                    std::cin >> month;
                     std::cout << " Is Paid (1 -> true/ 2 -> false): " << std::endl;
                     std::cin >> isPaid;
-                    gestPark.updateSubscriptionPaymentStatus(licensePlate, isPaid);
+                    gestPark.updateSubscriptionPaymentStatus(licensePlate, month, isPaid);
                 }
                 break;
             }
@@ -169,11 +182,12 @@ void Menu::handleUserInput() {
                 std::cout << "Find Ative Subscription selected." << std::endl;
                 std::cout << "Insert License Plate:"<< std::endl;
                 std::cin >>  licensePlate;
-                if ( gestPark.hasActiveSubscription( licensePlate ) ) {
-                    std::cout << "The car with license plate " << licensePlate << " has an active subscription." << std::endl;
-                }  
-                else {
-                    std::cout << "The car with license plate " << licensePlate << " does not have an active subscription." << std::endl;
+                std::cout << "Insert Month:"<< std::endl;
+                std::cin >> month;
+                if (gestPark.hasActiveSubscription(licensePlate, month)) {
+                    std::cout << "The car with license plate " << licensePlate << " has an active subscription for month " << month << "." << std::endl;
+                } else {
+                    std::cout << "The car with license plate " << licensePlate << " does not have an active subscription for month " << month << "." << std::endl;
                 }
                 break;
             }
