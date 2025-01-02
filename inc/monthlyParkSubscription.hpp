@@ -18,6 +18,8 @@ private:
 	std::string licensePlate;
 
 public:
+	/// @brief Define if the current month is paid
+	/// @param isPaid Used to set monthly subscription to true or false
 	void setIsPaidForCurrentMonth( bool isPaid );
     bool getIsPaidForCurrentMonth( ) const ;
 	int getNIF( ) const ;

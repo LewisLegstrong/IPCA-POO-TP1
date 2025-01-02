@@ -135,8 +135,15 @@ public:
     /// @return True if the car has an active subscription, false otherwise
     bool hasActiveSubscription(std::string licensePlate, int month);	
 
+	/// @brief Check where the car is parked and removes it if it exists in any park
+	/// @param licensePlate 
+	/// @param exitTime 
 	void findAndRemoveVehicle ( std::string& licensePlate, DateTime &exitTime );
 
+	/// @brief Check where the car is parked and add a vehicle if it doesn't exist in any park
+	/// @param city 
+	/// @param v 
+	/// @param in 
 	void findAndAddVehicle ( std::string city, Vehicle &v, DateTime &in );
 
 	/// @brief consult the history of a vehicle in the park

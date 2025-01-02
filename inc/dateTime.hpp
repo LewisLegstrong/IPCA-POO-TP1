@@ -25,6 +25,7 @@ public:
 
 private:
 	std::uint64_t timeStamp;
+	/// @brief Convert Time and Date to seconds and saves this value in TimeStamp variable
 	void convertToTimeStamp();
 
 public:
