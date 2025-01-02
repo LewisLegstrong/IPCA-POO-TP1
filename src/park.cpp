@@ -26,10 +26,6 @@ void Park::sumAccValue( float pricePaid ) {
     this->accumulatedValue += pricePaid;
 }
 
-void Park::consultHistoric(std::string licensePlate) {
-    readFile(licensePlate);
-}
-
 void Park::removeEntry(const std::string &licensePlate, DateTime &out, bool subscriptionIsPaid) {
     for (auto i = parkedVehicles.begin(); i != parkedVehicles.end(); ++i) {
         if (i->getVehicle().getLicensePlate() == licensePlate) {
@@ -206,6 +202,10 @@ void GestPark::findAndAddVehicle ( std::string city, Vehicle &v, DateTime &in ) 
         break;
         }
     }
+}
+
+void GestPark::consultHistoric(std::string licensePlate) {
+    readFile(licensePlate + ".txt");
 }
 
 GestPark::~GestPark() {

@@ -134,7 +134,9 @@ void Menu::handleUserInput() {
             }
 
             case menuOptions::RETURN_VEHICLE_HISTORY:{
-                std::cout << "Return Vehicle History selected." << std::endl;
+                std::cout << "Enter License Plate:";
+                std::cin >> licensePlate;
+                gestPark.consultHistoric(licensePlate);
                 break;
             }
 

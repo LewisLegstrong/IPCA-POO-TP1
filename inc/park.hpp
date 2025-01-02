@@ -51,10 +51,6 @@ public:
 	/// @brief sum the value paid by the vehicle to the accumulated value of the park
 	/// @param pricePaid
 	void sumAccValue ( float pricePaid );
-	
-	/// @brief consult the history of a vehicle in the park
-	/// @param licensePlate 
-	void consultHistoric ( std::string licensePlate );
 
 	/// @brief Verifies the number of empty spots in the park
 	/// @return 
@@ -142,6 +138,10 @@ public:
 	void findAndRemoveVehicle ( std::string& licensePlate, DateTime &exitTime );
 
 	void findAndAddVehicle ( std::string city, Vehicle &v, DateTime &in );
+
+	/// @brief consult the history of a vehicle in the park
+	/// @param licensePlate
+	void consultHistoric ( std::string licensePlate );
 };
 
 #endif 		// _PARK_
