@@ -2,17 +2,21 @@
 
 Date::Date(int d, int m, int y) {
 	this->year = y;
-	this->month = m;
-	this->day = d;
+	
+	if ( m > 12 || m < 1 ) {
+		throw std::invalid_argument("Invalid month");
+	}
+	else {
+		this->month = m;
+	}
 
-	std::cout << "Month: " << m << "; Day: " << d << std::endl;
 
-	// if ( d > monthDays[m]  || d < 1 ) {
-	// 	throw std::invalid_argument("Invalid day");
-	// }
-	// else {
-	// 	this->day = d;
-	// }
+	if ( d > monthDays[m]  || d < 1 ) {
+		throw std::invalid_argument("Invalid day");
+	}
+	else {
+		this->day = d;
+	}
 }
 
 int Date::getDay() {
