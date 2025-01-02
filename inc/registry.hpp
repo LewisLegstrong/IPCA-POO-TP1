@@ -50,7 +50,7 @@ public:
 	int getTimeInPark(DateTime &current);
 
 	/// @brief 			get the parked time
-	/// @return 		parked time in minutes 
+	/// @return 		parked time in seconds using overloaded operator (-) from DateTime Class
 	int getParkedTime();
 
 	/// @brief 			get the entry time
@@ -61,15 +61,17 @@ public:
 	/// @return 		exit time converted in minutes
 	int getExitTime(); 
 
-	/// @brief 			Calculate value to pay for the ticket if an exit time is given
+	/// @brief 			Calculate value to pay for the ticket if an exit time is given, Overloads the calculateTicket() function if a parameter is given
 	/// @param 			exitTimeSimulated 
-	/// @return 
+	/// @return 		Price to pay for the ticket
 	float simCalculateTicket( DateTime &exitTimeSimulated );
 
 	/// @brief 			get the price paid
 	float getPricePaid();
 
-	/// @brief 			Calculate th e value to pay for the ticket if the car is parked for 24h
+	/// @brief 			Calculate the value to pay for the ticket if the car is parked for 24h
+	/// @param 			exitTime
+	/// @return 		Price to pay for the ticket
 	float calculate24hValue( int exitTime );
 
 	/// @brief 			Returns the details of the vehicle as well as entry time registered in the object IORegistry
@@ -79,12 +81,12 @@ public:
 	/// @return 		State used to assist in the calculation of the ticket price 
 	parkPeriod getParkPeriod();
 
-	/// @brief 			Returns the period of the day the car is parked
+	/// @brief 			Returns the period of the day the car is parked, Overloads the getParkPeriod() function if a parameter is given
 	/// @param 			exitTimeSimulated 
 	/// @return 		State used to assist in the calculation of the ticket price
 	parkPeriod simGetParkPeriod( int exitTimeSimulated ); 
 
-	/// @brief 			Returns the vehicle registered in the object IORegistry
+	/// @brief 			Returns the reference to the vehicle registered in the object IORegistry
 	/// @return 		Vehicle registered in the object IORegistry
  	Vehicle& getVehicle();
 
