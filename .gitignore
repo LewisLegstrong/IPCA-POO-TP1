@@ -1,17 +1,5 @@
-#Ignore all
-* 
-main_tests/*.exe  
+/docs/
+/obj/
+/main_tests/
+*.txt
 *.exe
-
-#Except for these:
-!inc/
-!inc/*
-!src/
-!src/*
-!main_tests/
-!draw_io/*
-!draw_io/UML_projeto.drawio
-!Makefile
-!README.md
-!main.cpp
-!.gitignore
