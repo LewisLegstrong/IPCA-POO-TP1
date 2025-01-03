@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="gu6o751cEPqCVZNXGPYs">
-        <mxGraphModel dx="3424" dy="1410" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="903" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -422,6 +422,81 @@
                         <mxPoint x="580" y="1720" as="sourcePoint"/>
                         <mxPoint x="410.63" y="2070" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="159" value="Hora de Entrada" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                    <mxGeometry x="1680" y="1200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="160" value="Hora de Saída" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+                    <mxGeometry x="1840" y="1200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="161" value="Preço a pagar&lt;br&gt;Primeira Hora" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
+                    <mxGeometry x="2000" y="1200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="162" value="7:15" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1680" y="1280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="163" value="7:15" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1840" y="1280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="165" value="23,9" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2321" y="1280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="166" value="Preço a pagar Restante" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
+                    <mxGeometry x="2160" y="1200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="168" value="Preço a pagar&lt;br&gt;Total" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
+                    <mxGeometry x="2321" y="1200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" value="7:45" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1680" y="1360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="170" value="7:45" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1840" y="1360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" value="0,2 * 4 = 0,8" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2000" y="1280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="172" value="11:45h (dia)&lt;br&gt;11,75 *4 * 0,3 = 14,1&lt;br&gt;11:15h(noite)&lt;br&gt;11,25 * 4 * 0,2 = 9" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2160" y="1280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="0,2 * 4 = 0,8" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2000" y="1360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="174" value="11:15h (dia)&lt;br&gt;11,25 * 4 * 0,3 = 13,5&lt;br&gt;11:45h(noite)&lt;br&gt;11,75 * 4 * 0,2 = 9,4" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2160" y="1360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="175" value="23,7" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2321" y="1360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="176" value="19:15" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1680" y="1440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="177" value="19:15" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1840" y="1440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="178" value="0,2 * 4 = 0,8" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2000" y="1440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="179" value="11:15h (dia)&lt;br&gt;11,25 * 4 * 0,3 = 13,5&lt;br&gt;11:45h (noite)&lt;br&gt;11:75 * 4 * 0,2 = 9,4" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2160" y="1440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="180" value="23,7" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2321" y="1440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="181" value="19:45" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1680" y="1520" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="182" value="19:45" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1840" y="1520" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="183" value="0,2 * 4 = 0,8" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2000" y="1520" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="184" value="11:45 (dia)&lt;br&gt;11,75 * 4 * 0,3 = 14,1&lt;br&gt;11:15 (noite)&lt;br&gt;11,25 * 4 * 0,2 = 9" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2160" y="1520" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="185" value="23,9" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="2321" y="1520" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
